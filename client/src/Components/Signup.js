@@ -22,7 +22,6 @@ class Signup extends React.Component {
 
   handleGuest(){//set guest user
     this.props.setGuest()
-    console.log("We ready")
   }
   handleLogin(){//twitter authentication
     window.location="/auth/twitter"
