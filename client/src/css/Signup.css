@@ -1,0 +1,62 @@
+.signup {
+  background: #fff;
+  width: 80%;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  border-radius: 8px;
+  display: flex;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.signup a {
+}
+
+.signup__user {
+  width: 60%;
+  font-size: 2.5rem;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 300;
+}
+
+.signup__nonuser {
+  width: 40%;
+  background: #f2f2f2;
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 40px;
+  padding-right: 40px;
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+.signup__button {
+  width: 180px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  background: #00aced;
+  font-size: 0.9rem;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.signup__button:hover {
+  background: #1dcaff;
+}
+
+.fa-twitter {
+  display: inline-block;
+  margin-right: 10px;
+}
