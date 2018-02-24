@@ -1,11 +1,17 @@
 import React, { Component } from "react";
-import "./../App.css";
+import Navbar from "./Navbar";
+import Signup from "./Signup";
+import Footer from "./Footer";
+
+import "./../css/App.css";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Cute or Not</h1>
+        <Navbar />
+        <Signup />
+        <Footer />
       </div>
     );
   }

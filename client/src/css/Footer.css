@@ -1,0 +1,16 @@
+.footer {
+  border-top: 1px #ededed solid;
+  margin-top: 70px;
+  margin-left: 30px;
+  margin-right: 30px;
+  height: 100px;
+  padding-top: 30px;
+}
+
+.footer a {
+  color: #6a6a6a;
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 10px;
+  font-weight: 300;
+}
