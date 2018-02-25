@@ -37,6 +37,12 @@
   line-height: 1.5;
 }
 
+.signup__nonuser__link {
+  text-decoration: underline;
+  color: #002868;
+  cursor: pointer;
+}
+
 .signup__button {
   width: 180px;
   height: 50px;
