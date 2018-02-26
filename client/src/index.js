@@ -12,7 +12,7 @@ import thunk from 'redux-thunk';
 import {Provider} from 'react-redux'
 import {Router, Route, IndexRoute,browserHistory} from 'react-router';
 
-import Main from './main' //wrapper to pass authentication info downstream
+import Main from './Components/main' //wrapper to pass authentication info downstream
 
 //import combined reducer to pass to store here
 import reducers from './reducers/index'

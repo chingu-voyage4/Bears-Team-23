@@ -7,7 +7,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux';
 //action gets user info on every mount of this component
-import {getUser} from './actions/authentication';
+import {getUser} from '../actions/authentication';
 
 function mapStateToProps(state){//read store
   return state
@@ -23,7 +23,7 @@ class Main extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      authenticated:false //only proceed after communication with the store
+      ready:false //only proceed after communication with the store
     }
   }
   componentDidMount(){
@@ -32,12 +32,12 @@ class Main extends React.Component{
   }
   componentDidUpdate(prevProps, prevState) {
     if(prevProps.user.user!==this.props.user.user){//once user info comes from cdm proceed to rendering
-      this.setState({authenticated:true})
+      this.setState({ready:true})
     }
   }
     render(){
       //send current route from router to menu
-        if(this.state.authenticated){
+        if(this.state.ready){
           return (
             <div>
                 {this.props.children}

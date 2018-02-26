@@ -1,0 +1,27 @@
+{
+  "name": "bears-team-23",
+  "version": "1.0.0",
+  "description": "backend",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dereje1/Bears-Team-23.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dereje1/Bears-Team-23/issues"
+  },
+  "homepage": "https://github.com/Dereje1/Bears-Team-23#readme"
+}
