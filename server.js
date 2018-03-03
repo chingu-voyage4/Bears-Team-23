@@ -1,6 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const private = require('dotenv').config()
+const private = require('dotenv').config();
+
+const passport = require('passport');
+const passportSetup = require('./config/passport-setup');
+const router = require('express').Router();
+const authRoutes = require('./routes/auth-routes');
+
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -13,6 +19,21 @@ const db = require('./models/db')
 //access schemas / collections
 const pictures = require('./models/schemas/pictures')
 
+app.use('/auth', authRoutes);
+
+app.get('/',(req,res)=>{
+  res.send('test')
+})
+
+
+/*
+
+
+DB stuff
+
+
+
+*/
 //Testing database below
 app.post('/testdb',(req,res)=>{
   const addedPic = req.body

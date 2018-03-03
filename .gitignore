@@ -6,6 +6,10 @@
 # testing
 /coverage
 
+#keys
+
+/conifg/keys.js
+
 # production
 /build
 

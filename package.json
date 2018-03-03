@@ -11,7 +11,9 @@
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
-    "mongoose": "^5.0.7"
+    "mongoose": "^5.0.7",
+    "passport": "^0.4.0",
+    "passport-twitter": "^1.0.4"
   },
   "devDependencies": {
     "concurrently": "^3.5.0"
