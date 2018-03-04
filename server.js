@@ -37,7 +37,6 @@ const pictures = require('./models/schemas/pictures')
 app.use(authRoutes);
 
 app.get('/',(req,res)=>{
-  console.log('hey')
   res.send('test')
 })
 

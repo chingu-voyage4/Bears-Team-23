@@ -33,10 +33,6 @@ class Signup extends React.Component {
     window.location = "/auth/twitter";
   }
   render() {
-    if (!this.props.user.user.authenticated) {
-      if (this.props.user.user.username === "Guest") {
-        return null;
-      } else {
         return (
           <div className="signup">
             <div className="signup__user">
@@ -64,10 +60,6 @@ class Signup extends React.Component {
           </div>
         );
       }
-    } else {
-      return null;
-    }
   }
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);
