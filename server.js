@@ -7,7 +7,6 @@ const passportSetup = require('./config/passport-setup');
 const router = require('express').Router();
 const authRoutes = require('./routes/auth-routes');
 const cookieSession = require('cookie-session');
-const cors = require('cors');
 
 
 const app = express();
@@ -16,13 +15,13 @@ const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// set up session cookies
+// // set up session cookies
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
   keys: [keys.session.cookieKey]
 }));
 
-// initialize passport
+// // initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -38,7 +37,9 @@ const pictures = require('./models/schemas/pictures')
 app.use(authRoutes);
 
 app.get('/',(req,res)=>{
+  console.log('hey')
   res.send('test')
 })
+
 
 app.listen(port, () => console.log(`Listening on port ${port}`));

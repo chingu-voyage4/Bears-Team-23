@@ -21,25 +21,19 @@ passport.use(
         consumerSecret: keys.twitter.consumerSecret,
         callbackURL: '/auth/twitter/redirect'
     }, (accessToken, refreshToken, profile, done) => {
-        // passport callback function
-        //console.log(profile.id);
-        //console.log(profile.displayName);
-
-        User.findOne({'twitter.twitterId': profile.id_str}).then((currentUser) => {
+        User.findOne({'twitterId': profile.id_str}).then((currentUser) => {
             
             if(currentUser){
                 console.log('found')
                 console.log('user is: ', currentUser);
                 done(null, currentUser);
             } else {
-                console.log('not found')
-                let newUser = new User();
-                newUser.twitter.id          = profile.id_str;
-                newUser.twitter.username    = profile.username;
-                newUser.twitter.displayName = profile.displayName;
-                
+                console.log('not found')                
 
-                newUser.save().then((newUser)=> {
+                new User({
+                    twitterId: profile.id_str,
+                    displayName: profile.displayName
+                }).save().then((newUser)=> {
                     done(null, newUser);
                 })
             }

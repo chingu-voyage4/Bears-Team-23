@@ -11,4 +11,9 @@ router.get('/auth/twitter', passport.authenticate('twitter', {
     res.send('you reached the redirect URI');
   });
 
+
+  router.get('/api/profile', (req, res)=> {
+    res.send(req.user);
+  })
+  
   module.exports = router;
