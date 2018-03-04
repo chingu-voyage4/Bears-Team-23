@@ -4,6 +4,7 @@ import Signup from "./Signup";
 import Footer from "./Footer";
 
 import "./../css/App.css";
+import Upload from "./Upload";
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
       <div className="App">
         <Navbar />
         <Signup />
+        <Upload />
         <Footer />
       </div>
     );
