@@ -6,7 +6,7 @@ import logo from "./../img/cute_or_not.svg";
 import {connect} from 'react-redux';
 
 function mapStateToProps(state){//only reads store state
-  return state
+  return {user: state.user}
 }
 //..end redux commands
 
@@ -15,10 +15,10 @@ class Navbar extends React.Component {
     window.location="/auth/twitter"
   }
   handleLogout(){//twitter authentication
-    window.location="/logout"
+    window.location="/auth/logout"
   }
   render() {
-    if(this.props.user.user.authenticated){
+    if(this.props.user.user){
       return (
         <div className="navbar">
           <img src={logo} className="navbar__img" alt="appfavicon"/>
