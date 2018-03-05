@@ -28,7 +28,6 @@ const Routes = (
   <Router history={browserHistory}>
     <Route path="/" component={Main}>
       <IndexRoute component={App}/>
-
     </Route>
   </Router>
 </Provider>

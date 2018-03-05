@@ -33,14 +33,11 @@ class Signup extends React.Component {
     window.location = "/auth/twitter";
   }
   render() {
-    if (!this.props.user.user.authenticated) {
-      if (this.props.user.user.username === "Guest") {
-        return null;
-      } else {
         return (
           <div className="signup">
             <div className="signup__user">
               It's like Hot or Not,<br /> but for pets
+
               <button
                 className="signup__button"
                 onClick={() => this.handleLogin()}
@@ -51,6 +48,7 @@ class Signup extends React.Component {
             </div>
             <div className="signup__nonuser">
               <p>
+              {this.props.user.user.displayName} 
                 Or, if you don't want to post adorable pictures of your pet,
                 just continue as a{" "}
                 <span
@@ -64,10 +62,6 @@ class Signup extends React.Component {
           </div>
         );
       }
-    } else {
-      return null;
-    }
   }
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);

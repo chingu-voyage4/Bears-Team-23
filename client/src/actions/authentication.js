@@ -4,7 +4,7 @@ export function getUser(){
   // action gets user authentication status from /profile route of server then
   //updates store
   return function (dispatch){
-    axios.get('/profile')
+    axios.get('/api/profile')
       .then((response)=>{
           dispatch(
               {
