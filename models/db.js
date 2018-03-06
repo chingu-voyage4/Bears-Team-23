@@ -7,7 +7,7 @@ const mongoose = require( 'mongoose' );
 const keys = require('./../config/keys');
 
 // Build the connection string
-const dbURI = process.env.MONGOLAB_URI || keys.mongodb.dburi_local;
+const dbURI = process.env.MONGOLAB_URI || process.env.DB_URI_LOCAL;
 // Create the database connection
 mongoose.connect(dbURI);
 //for previous mongoose versions use mongoose.connect(dbURI, { useMongoClient: true }) in case of conflict with express-sessions;
