@@ -18,7 +18,7 @@ class Navbar extends React.Component {
     window.location="/auth/logout"
   }
   render() {
-    if(this.props.user.user){
+    if(this.props.user.user.authenticated){
       return (
         <div className="navbar">
           <img src={logo} className="navbar__img" alt="appfavicon"/>

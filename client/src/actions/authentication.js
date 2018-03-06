@@ -3,7 +3,7 @@ import axios from 'axios';
 export function getUser(){
   // action gets user authentication status from /profile route of server then
   //updates store
-  
+
   return async (dispatch) => {
     const response = await axios.get('/api/profile');
       try {
@@ -27,3 +27,31 @@ export function getUser(){
   }
 }
 
+export function setGuest(){
+  // guest account setter, gets response from /guest route of server
+  return async (dispatch)=>{
+    const response = await axios.get('/api/guest')
+      try{
+        dispatch(
+            {
+              type:"SET_GUEST_STATUS",
+              payload:response.data
+            }
+          )
+      }
+
+      catch(error){//if no server connection or any other error, force guest response
+        dispatch(
+              {
+                type:"SET_GUEST_STATUS_REJECTED",
+                payload:
+            {
+              authenticated: false,
+              userip: null,
+              username: "Guest",
+              displayname: "Guest"
+            }
+        })
+      }
+    }
+  }
