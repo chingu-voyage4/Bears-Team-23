@@ -17,29 +17,25 @@ passport.deserializeUser((id, done) => {
 
 passport.use(
     new TwitterStrategy({
-        consumerKey: keys.twitter.consumerKey,
-        consumerSecret: keys.twitter.consumerSecret,
+        consumerKey: process.env.CONSUMER_KEY,
+        consumerSecret: process.env.CONSUMER_SECRET,
         callbackURL: '/auth/twitter/redirect'
-    }, (accessToken, refreshToken, profile, done) => {
-        User.findOne({'twitterId': profile.id_str}).then((currentUser) => {
-            
-            if(currentUser){
-                console.log('found')
-                console.log('user is: ', currentUser);
-                done(null, currentUser);
-            } else {
-                console.log('not found')                
-
-                new User({
-                    twitterId: profile.id_str,
-                    displayName: profile.displayName
-                }).save().then((newUser)=> {
-                    done(null, newUser);
-                })
-            }
-        });
+    }, async (accessToken, refreshToken, profile, done) => {
+        const currentUser = await User.findOne({'twitterId': profile.id_str});
+        
+        if(currentUser){
+            done(null, currentUser);
+        } 
+        else {           
+            const newUser = await new User({
+                twitterId: profile.id_str,
+                displayName: profile.displayName
+            }).save();
+                
+        done(null, newUser);
+        }
     }
-
+    
     )
 );
 
