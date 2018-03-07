@@ -21,21 +21,19 @@ passport.use(
         callbackURL: '/auth/twitter/redirect'
     }, async (accessToken, refreshToken, profile, done) => {
         const currentUser = await User.findOne({'twitterId': profile.id_str});
-        
+
         if(currentUser){
             done(null, currentUser);
-        } 
-        else {           
+        }
+        else {
             const newUser = await new User({
                 twitterId: profile.id_str,
                 displayName: profile.displayName
             }).save();
-                
+
         done(null, newUser);
         }
     }
-    
+
     )
 );
-
-
