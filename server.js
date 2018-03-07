@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const private = require('dotenv').config();
-const keys = require('./config/keys')
 const passport = require('passport');
 const passportSetup = require('./config/passport-setup');
 const router = require('express').Router();

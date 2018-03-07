@@ -1,6 +1,5 @@
 const passport = require('passport');
 const TwitterStrategy = require('passport-twitter').Strategy;
-const keys = require('./keys.js');
 const User = require('./../models/schemas/user');
 
 
