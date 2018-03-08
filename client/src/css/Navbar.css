@@ -27,11 +27,21 @@
 .navbar__dropdown__content__onClick {
   display: block;
   width: 170px;
-  height: 200px;
   background: white;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   right: 150px;
-  margin-top: 10px;
+  margin-top: 5px;
+}
+
+.navbar__dropdown__content__item {
+  width: 100%;
+  padding: 15px 0px 10px 15px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.navbar__dropdown__content__item:hover {
+  background: #e8f0ff;
 }
 
 

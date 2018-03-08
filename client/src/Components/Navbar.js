@@ -25,6 +25,9 @@ class Navbar extends React.Component {
   handleLogout(){//twitter authentication
     window.location="/auth/logout"
   }
+  linkToProfile(){
+    window.location="/profile"
+  }
 
   handleClickOutside = (evt)=> {
     console.log('something');
@@ -58,6 +61,9 @@ class Navbar extends React.Component {
           <div className = "navbar__dropdown">
             <button className="navbar__button" onClick = {() => this.showDropdown(true)}>Hi {this.getFirstName()}</button>
             <div className = {dropdownClass}>
+              <p className = "navbar__dropdown__content__item" onClick = {this.linkToProfile}>Profile</p>
+              <p className = "navbar__dropdown__content__item">Upload</p>
+              <p className = "navbar__dropdown__content__item" onClick = {this.handleLogout}>Logout</p>
             </div>
           </div>
         </div>

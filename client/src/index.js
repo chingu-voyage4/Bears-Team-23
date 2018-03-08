@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./Components/App";
 import registerServiceWorker from "./registerServiceWorker";
-
+import Profile from './Components/Profile';
 //Added below for redux store
 import {applyMiddleware, createStore} from 'redux';
 import logger from 'redux-logger';
@@ -28,6 +28,9 @@ const Routes = (
   <Router history={browserHistory}>
     <Route path="/" component={Main}>
       <IndexRoute component={App}/>
+    </Route>
+    <Route path="/profile" component={Main}>
+      <IndexRoute component={Profile}/>
     </Route>
   </Router>
 </Provider>

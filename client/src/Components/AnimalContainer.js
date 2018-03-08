@@ -16,7 +16,7 @@ class AnimalContainer extends React.Component {
         if(this.props.user.user.authenticated || this.props.user.user.username=="Guest"){
             return (
                 <div className = 'AnimalContainer'>
-
+                <p className = "conPlaceholder">This is where the animals go</p>
                 </div>
             )
         }
