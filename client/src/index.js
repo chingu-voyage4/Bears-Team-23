@@ -28,9 +28,7 @@ const Routes = (
   <Router history={browserHistory}>
     <Route path="/" component={Main}>
       <IndexRoute component={App}/>
-    </Route>
-    <Route path="/profile" component={Main}>
-      <IndexRoute component={Profile}/>
+      <Route path="/profile" component={Profile}/>
     </Route>
   </Router>
 </Provider>
