@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import AnimalContainer from './AnimalContainer';
 import './../css/Profile.css'
 
 import "./../css/App.css";
