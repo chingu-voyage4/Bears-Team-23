@@ -24,7 +24,7 @@ router.get('/api/profile',isLoggedIn, (req, res)=> {
           authenticated: true,
           userip: ip,
           username: req.user.username ? req.user.username : null ,
-          displayname: req.user.displayName //only expose username and displayname
+          displayName: req.user.displayName //only expose username and displayname
       });
   })
 

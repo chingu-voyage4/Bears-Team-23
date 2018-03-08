@@ -7,7 +7,6 @@
 /coverage
 
 #keys
-/config/keys.js
 
 # production
 /build

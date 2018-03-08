@@ -3,6 +3,8 @@ const TwitterStrategy = require('passport-twitter').Strategy;
 const User = require('./../models/schemas/user');
 
 
+
+
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
@@ -28,7 +30,7 @@ passport.use(
         else {
             const newUser = await new User({
                 twitterId: profile.id_str,
-                displayName: profile.displayName
+                displayName: profile.displayName,
             }).save();
 
         done(null, newUser);

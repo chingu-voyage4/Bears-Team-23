@@ -20,7 +20,7 @@ export function getUser(){
           authenticated: false,
           userip: null,
           username: null,
-          displayname: null
+          displayName: null
         }
       })
     }
@@ -49,7 +49,7 @@ export function setGuest(){
               authenticated: false,
               userip: null,
               username: "Guest",
-              displayname: "Guest"
+              displayName: "Guest"
             }
         })
       }
