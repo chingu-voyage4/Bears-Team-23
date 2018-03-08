@@ -12,19 +12,41 @@
   margin-right: auto;
 }
 
-.navbar__button {
+.navbar__dropdown {
   grid-column-start: 5;
+  position: relative;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.navbar__dropdown__content {
+  display: none;
+  position: absolute;
+}
+
+.navbar__dropdown__content__onClick {
+  display: block;
+  width: 170px;
+  height: 200px;
+  background: white;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  right: 150px;
+  margin-top: 10px;
+}
+
+
+
+
+.navbar__button {
   width: 70px;
   height: 30px;
-  position: relative;
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-left: 30px;
   background: transparent;
   border-radius: 8px;
   color: white;
   cursor: pointer;
 }
+
+
 
 .navbar__button:hover {
   background: white;
