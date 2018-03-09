@@ -31,6 +31,7 @@ passport.use(
             const newUser = await new User({
                 twitterId: profile.id_str,
                 displayName: profile.displayName,
+                username:profile.username
             }).save();
 
         done(null, newUser);

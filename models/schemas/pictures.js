@@ -8,7 +8,8 @@ const picSchema = mongoose.Schema({
   imgLink:String, // cloudinary link
   timeStamp: Number, //capture pic creation date/time
   totalRatings: Number, //increment up one on every rating
-  avgRating: Number // = ((avgRating * totalRatings) + currentRating) / (totalRatings + 1)
+  avgRating: Number, // = ((avgRating * totalRatings) + currentRating) / (totalRatings + 1)
+  voted:[String]
 });
 
 module.exports = mongoose.model('Picture',picSchema);
