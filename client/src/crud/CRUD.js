@@ -3,6 +3,21 @@ import {store} from './../index.js'
 
 //console.log(store.getState().user.user);
 
+export function getUser() {
+  return new Promise((resolve, reject)=> {
+    axios.get('/api/profile')
+    .then((response)=> {
+      resolve(response.data);
+    })
+    .catch((err)=> {
+      reject(err.data)
+    })
+  })
+}
+
+export function getPic() {
+
+}
 
 export function getRandomPic(){
 
@@ -25,7 +40,7 @@ export function getProfilePics(){
   }
   const user = store.getState().user.user.username;
   return new Promise((resolve,reject)=>{
-    axios.get('/api/crud/profile/'+user)
+    axios.get('/api/crud/profilePics/'+user)
       .then((response)=>{
         resolve(response.data)
       })
@@ -42,6 +57,10 @@ export function createPic(picInfo){
   }
 
   picInfo.owner = store.getState().user.user.username;
+  picInfo.timeStamp = Date.now();
+  picInfo.totalRatings = 0;
+  picInfo.avgRating = 0;
+  picInfo.voted = [];
 
   return new Promise((resolve,reject)=>{
     axios.post('/api/crud',picInfo)
