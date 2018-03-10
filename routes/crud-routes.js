@@ -47,22 +47,26 @@ router.put('/api/crud/:_id', (req, res)=>{ // update pic
    const picID = req.params._id;
 
    const update = { '$set': updateInfo};
-   var modified = {new: true};
+   const modified = {new: true}; //optional, if true responds with the modified document
    pictures.findByIdAndUpdate(picID, update, modified, (err, pic)=>{
        if(err){
          throw err;
        }
-       res.json(pic);
+       else{
+         res.json(pic);
+       }
    })
 })
 
 router.delete('/api/crud/:_id',(req,res)=>{
     const query = {_id: req.params._id};
     pictures.remove(query, (err, pic)=>{
-    if(err){
-      throw err;
-    }
-      res.json(pic);
+      if(err){
+        throw err;
+      }
+      else{
+        res.json(pic);
+      }
     })
 })
 
