@@ -4,7 +4,7 @@
 //creates one place for making the connection to the db
 // Bring Mongoose into the app
 const mongoose = require( 'mongoose' );
-const keys = require('./../config/keys');
+// const keys = require('./../config/keys');
 
 // Build the connection string
 const dbURI = process.env.MONGOLAB_URI || process.env.DB_URI_LOCAL;
