@@ -1,7 +1,8 @@
 const passport = require('passport');
 const TwitterStrategy = require('passport-twitter').Strategy;
-// const keys = require('./keys.js');
 const User = require('./../models/schemas/user');
+
+
 
 
 passport.serializeUser((user, done) => {
@@ -22,21 +23,20 @@ passport.use(
         callbackURL: '/auth/twitter/redirect'
     }, async (accessToken, refreshToken, profile, done) => {
         const currentUser = await User.findOne({'twitterId': profile.id_str});
-        
+
         if(currentUser){
             done(null, currentUser);
-        } 
-        else {           
+        }
+        else {
             const newUser = await new User({
                 twitterId: profile.id_str,
-                displayName: profile.displayName
+                displayName: profile.displayName,
+                username:profile.username
             }).save();
-                
+
         done(null, newUser);
         }
     }
-    
+
     )
 );
-
-

@@ -7,6 +7,7 @@ var bcrypt   = require('bcrypt-nodejs');
 var userSchema = mongoose.Schema({
         twitterId    : String,
         displayName  : String,
+        username  : String
 });
 
 // methods ======================
