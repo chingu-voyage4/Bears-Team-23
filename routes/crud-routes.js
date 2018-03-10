@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const cookieSession = require('cookie-session');
 
-const pictures = require('../models/schemas/pictures')
+const pictures = require('../models/schemas/pictures');
+
+
 router.get('/api/crud/:user',(req,res)=>{ // random pic fetcher
     pictures.find({},(err,pics)=>{
       if(err){
@@ -14,7 +16,7 @@ router.get('/api/crud/:user',(req,res)=>{ // random pic fetcher
     })
 })
 
-router.get('/api/crud/profile/:user',(req,res)=>{ // profile pics fetcher
+router.get('/api/crud/profilePics/:user',(req,res)=>{ // profile pics fetcher
     const query = {owner:req.params.user}
     pictures.find(query,(err,pics)=>{
       if(err){
@@ -58,7 +60,7 @@ router.put('/api/crud/:_id', (req, res)=>{ // update pic
    })
 })
 
-router.delete('/api/crud/:_id',(req,res)=>{
+router.delete('/api/crud/:_id',(req,res)=>{ //deletes pic
     const query = {_id: req.params._id};
     pictures.remove(query, (err, pic)=>{
       if(err){
