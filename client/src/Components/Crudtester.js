@@ -11,44 +11,31 @@ function mapStateToProps(state){//only reads store state
 //..end redux commands
 
 class CRUD extends Component {
-  getRandPic(){
-    let user = this.props.user.user.username==="Guest" ? this.props.user.user.userip : this.props.user.user.username
-    getRandomPic(user).then((response)=>{
-      console.log(response)
-    })
+  
+  async getRandPic(){
+    const response = await getRandomPic()
+    console.log(response);
   }
-  getProfile(){
-    if(this.props.user.user.username==="Guest"){
-      console.log("Guests not allowed here")
-      return
-    }
-    else{
-      getProfilePics(this.props.user.user.username).then((response)=>{
-        console.log(response)
-      })
-    }
+  
+
+  async getProfile(){
+      const response = await getProfilePics()
+      console.log(response)
   }
 
-  newPic(){
-    if(this.props.user.user.username==="Guest"){
-      console.log("Guests not allowed here")
-      return
-    }
-    else{
-      const samplePic = {
-            owner:this.props.user.user.username,
+  async newPic(){
+
+    const samplePic = {
             imgDescription:"test",
             imgLink:"https://",
             timeStamp: Date.now(),
             totalRatings:0,
             avgRating:0,
             voted:[]
-      }
-      createPic(samplePic).then((response)=>{
-        console.log(response)
-      })
     }
-  }
+    await createPic(samplePic);
+    console.log(samplePic);
+  }    
 
   voteOnPic(){
     let user = this.props.user.user.username==="Guest" ? this.props.user.user.userip : this.props.user.user.username
@@ -65,18 +52,12 @@ class CRUD extends Component {
     })
   }
 
-  removePic(){
-    if(this.props.user.user.username==="Guest"){
-      console.log("Guests not allowed here")
-      return
-    }
-    else{
+  async removePic(){
       let picID = "5aa3c2020f469b12a40a4345" //get this from the current picture that is being voted on
-      deletePic(picID).then((response)=>{
-        console.log(response)
-      })
-    }
+      const response = await deletePic(picID)
+      console.log(response)
   }
+  
   render() {
     if(this.props.user.user.authenticated || this.props.user.user.username==="Guest"){
       return (
