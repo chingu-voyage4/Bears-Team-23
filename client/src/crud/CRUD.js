@@ -1,28 +1,11 @@
 import axios from 'axios'
 import {store} from './../index.js'
 
-//console.log(store.getState().user.user);
-
-export function getUser() {
-  return new Promise((resolve, reject)=> {
-    axios.get('/api/profile')
-    .then((response)=> {
-      resolve(response.data);
-    })
-    .catch((err)=> {
-      reject(err.data)
-    })
-  })
-}
-
-export function getPic() {
-
-}
+export const userInfo = ()=>store.getState().user.user
 
 export function getRandomPic(){
-
   return new Promise((resolve,reject)=>{
-    let user = store.getState().user.user.username==="Guest" ? store.getState().user.user.userip : store.getState().user.user.username
+    const user = userInfo().username==="Guest" ? userInfo().userip : userInfo().username
     axios.get('/api/crud/'+user)
     .then((response)=>{
       resolve(response.data)
@@ -34,11 +17,11 @@ export function getRandomPic(){
 }
 
 export function getProfilePics(){
-  if(store.getState().user.user.username==="Guest"){
+  if(userInfo().username==="Guest"){
    console.log("Guests not allowed here");
    return null;
   }
-  const user = store.getState().user.user.username;
+  const user = userInfo().username;
   return new Promise((resolve,reject)=>{
     axios.get('/api/crud/profilePics/'+user)
       .then((response)=>{
@@ -51,12 +34,12 @@ export function getProfilePics(){
 }
 
 export function createPic(picInfo){
-  if(store.getState().user.user.username==="Guest"){
+  if(userInfo().username==="Guest"){
     console.log("Guests not allowed here")
     return null;
   }
 
-  picInfo.owner = store.getState().user.user.username;
+  picInfo.owner = userInfo().username;
   picInfo.timeStamp = Date.now();
   picInfo.totalRatings = 0;
   picInfo.avgRating = 0;
@@ -73,9 +56,17 @@ export function createPic(picInfo){
   })
 }
 
-export function updatePic(picID,updateQuery){
+export function updatePic(currentState,newrating){
+  const user = userInfo().username==="Guest" ? userInfo().userip : userInfo().username
+  const newAve = ((currentState.avgRating*currentState.totalRatings) + newrating )/(currentState.totalRatings + 1)
+  const updateInfo = {
+     totalRatings: currentState.totalRatings+1, //increment from current picture ratings in current state
+     // = ((avgRating * totalRatings) + currentRating) / (totalRatings + 1)
+     avgRating: newAve, //compute from current picture ratings in current state
+     voted: [...currentState.voted,user] //add current voteer in old voted array
+  }
   return new Promise((resolve,reject)=>{
-    axios.put('/api/crud/'+picID,updateQuery)
+    axios.put('/api/crud/'+currentState._id,updateInfo)
     .then((response)=>{
       resolve(response.data)
     })
@@ -86,8 +77,7 @@ export function updatePic(picID,updateQuery){
 }
 
 export function deletePic(picID){
-
-  if(store.getState().user.user.username==="Guest"){
+  if(userInfo().username==="Guest"){
     console.log("Guests not allowed here")
     return null;
   }
