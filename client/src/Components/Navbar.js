@@ -59,7 +59,7 @@ class Navbar extends React.Component {
         <div className="navbar">
           <img src={logo} className="navbar__img" alt="appfavicon"/>
           <div className = "navbar__dropdown">
-            <button className="navbar__button" onClick = {() => this.showDropdown(true)}>Hi {this.getFirstName()}</button>
+            <button className="navbar__button " onClick = {() => this.showDropdown(true)}>Hi {this.getFirstName()}</button>
             <div className = {dropdownClass}>
               <p className = "navbar__dropdown__content__item" onClick = {this.linkToProfile}>Profile</p>
               <p className = "navbar__dropdown__content__item">Upload</p>
@@ -73,7 +73,7 @@ class Navbar extends React.Component {
       return (
         <div className="navbar">
           <img src={logo} className="navbar__img" alt="appfavicon"/>
-          <button className="navbar__button navbar__dropdown" onClick={()=>this.handleLogin()}>Sign in</button>
+          <button className="navbar__button" onClick={()=>this.handleLogin()}>Sign in</button>
         </div>
       );
     }
