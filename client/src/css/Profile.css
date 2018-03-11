@@ -1,0 +1,53 @@
+.Profile {
+    background: #fff;
+    width: 80%;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+
+
+.userview {
+  background: linear-gradient(grey, black);
+  font-size: 1.5rem;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  width: 75%;
+  padding: 10px 10px; overflow:auto;
+  min-height: 800px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  border-radius: 8px;
+  display: flex;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.displayusername {
+  background: linear-gradient(grey, black);
+  width: 98%;
+  height: 50px;
+  position: absolute;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  display: flex;
+  text-align: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.namecontainer {
+   position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+    margin: 0 auto;
+    padding: 10px;
+}
