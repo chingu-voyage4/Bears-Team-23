@@ -20,7 +20,10 @@ import reducers from './reducers/index'
 //use logger for debugging only
 const middleware = applyMiddleware(thunk,logger)
 //const middleware = applyMiddleware(thunk)
-const store = createStore(reducers,middleware)
+export const store = createStore(reducers,middleware)
+
+
+
 
 //decalre all routes of application below
 const Routes = (
