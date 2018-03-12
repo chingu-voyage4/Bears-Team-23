@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./Components/App";
 import registerServiceWorker from "./registerServiceWorker";
-
+import Profile from './Components/Profile';
 //Added below for redux store
 import {applyMiddleware, createStore} from 'redux';
 import logger from 'redux-logger';
@@ -20,7 +20,10 @@ import reducers from './reducers/index'
 //use logger for debugging only
 const middleware = applyMiddleware(thunk,logger)
 //const middleware = applyMiddleware(thunk)
-const store = createStore(reducers,middleware)
+export const store = createStore(reducers,middleware)
+
+
+
 
 //decalre all routes of application below
 const Routes = (
@@ -28,7 +31,7 @@ const Routes = (
   <Router history={browserHistory}>
     <Route path="/" component={Main}>
       <IndexRoute component={App}/>
-
+      <Route path="/profile" component={Profile}/>
     </Route>
   </Router>
 </Provider>
