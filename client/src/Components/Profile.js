@@ -44,6 +44,7 @@ class Profile extends Component {
           key={pet._id} 
           petName = {pet.petName} 
           imgLink = {pet.imgLink}
+          avgRating = {pet.avgRating}
         />
       )
     })
@@ -74,8 +75,11 @@ class Profile extends Component {
     });
     const newProfilePics = [...this.state.pets,pic] //add the new picture to the users existing picture list
     this.setState({
-      pets: newProfilePics
+      pets: newProfilePics,
+      petName: '',
+      petImgUrl: ''
     });
+
   }
 
 
@@ -88,6 +92,10 @@ class Profile extends Component {
     }
   }
 
+  handleGuest(){
+    window.location = '/'
+  }
+
   render() {
 
     let submitClass = classnames({
@@ -96,8 +104,9 @@ class Profile extends Component {
       profile__pet__form__button: true
     })
 
-
+    if (this.getUserName()){
     return (
+
       <div className="ProfileModel">
         <Navbar />
 
@@ -139,6 +148,10 @@ class Profile extends Component {
         <Footer />
       </div>
     );
+  }
+  else {
+    {this.handleGuest()}
+  }
   }
 }
 
