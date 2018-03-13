@@ -4,7 +4,8 @@
 const mongoose = require('mongoose');
 const picSchema = mongoose.Schema({
   owner: String,  //twitter username or similar ..
-  imgDescription:String, // could be pet name for instance ?
+  imgDescription:String,
+  petName: String, // could be pet name for instance ?
   imgLink:String, // cloudinary link
   timeStamp: Number, //capture pic creation date/time
   totalRatings: Number, //increment up one on every rating

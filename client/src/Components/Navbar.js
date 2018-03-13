@@ -29,6 +29,10 @@ class Navbar extends React.Component {
     window.location="/profile"
   }
 
+  goHome() {
+    window.location="/"
+  }
+
   handleClickOutside = (evt)=> {
     console.log('something');
     this.showDropdown(false);
@@ -57,12 +61,11 @@ class Navbar extends React.Component {
     if(this.props.user.user.authenticated){
       return (
         <div className="navbar">
-          <img src={logo} className="navbar__img" alt="appfavicon"/>
+          <img src={logo} className="navbar__img" alt="appfavicon" onClick = {this.goHome}/>
           <div className = "navbar__dropdown">
             <button className="navbar__button " onClick = {() => this.showDropdown(true)}>Hi {this.getFirstName()}</button>
             <div className = {dropdownClass}>
               <p className = "navbar__dropdown__content__item" onClick = {this.linkToProfile}>Profile</p>
-              <p className = "navbar__dropdown__content__item">Upload</p>
               <p className = "navbar__dropdown__content__item" onClick = {this.handleLogout}>Logout</p>
             </div>
           </div>
@@ -72,7 +75,7 @@ class Navbar extends React.Component {
     else {
       return (
         <div className="navbar">
-          <img src={logo} className="navbar__img" alt="appfavicon"/>
+          <img src={logo} className="navbar__img" alt="appfavicon" onClick = {this.goHome}/>
           <button className="navbar__button" onClick={()=>this.handleLogin()}>Sign in</button>
         </div>
       );

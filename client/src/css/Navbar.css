@@ -6,16 +6,30 @@
 }
 
 .navbar__img {
+  margin-top: 5px;
   width: 250px;
   grid-column-start: 3;
   margin-left: auto;
   margin-right: auto;
+  cursor: pointer;
+}
+
+.navbar__button {
+  position: relative;
+  margin-top: 15px;
+  width: 70px;
+  height: 30px;
+  background: transparent;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  grid-column-start: 5;
 }
 
 .navbar__dropdown {
   grid-column-start: 5;
   position: relative;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-left: 20px;
 }
 
@@ -47,18 +61,6 @@
 
 
 
-.navbar__button {
-  position: relative;
-  width: 70px;
-  height: 30px;
-  background: transparent;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-}
-
-
-
 .navbar__button:hover {
   background: white;
   transition: 0.2s;
@@ -83,7 +85,7 @@
     margin-left: auto;
     margin-right: auto;
     display: block;
-    width: 90%;
+    width: 90%;  
   }
   .navbar__button {
     margin-left: auto;
