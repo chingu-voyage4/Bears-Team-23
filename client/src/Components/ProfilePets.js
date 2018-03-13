@@ -1,4 +1,5 @@
 import React from 'react';
+import './../css/ProfilePets.css'
 
 const ProfilePets = (props) => {
 
@@ -6,7 +7,9 @@ const ProfilePets = (props) => {
 
     return (
         <div className = "ProfilePets">
-            {props.imageDescription}
+            <p className = 'ProfilePets__name'>{props.petName}</p>
+            <img className = 'ProfilePets__img' src = {props.imgLink} alt = "" />
+            <p className = 'ProfilePets__rating'>Cuteness Rating: 0</p>
         </div>
     )
 }

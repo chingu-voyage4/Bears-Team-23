@@ -6,7 +6,6 @@ import AnimalContainer from './AnimalContainer';
 import CRUD from './Crudtester'
 
 import "./../css/App.css";
-import Upload from "./Upload";
 
 class App extends Component {
   render() {
