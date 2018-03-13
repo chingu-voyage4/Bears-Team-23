@@ -41,6 +41,7 @@ export function createPic(picInfo){
 
   picInfo.owner = userInfo().username;
   picInfo.timeStamp = Date.now();
+  picInfo.petName = "Fluficans"
   picInfo.totalRatings = 0;
   picInfo.avgRating = 0;
   picInfo.voted = [];
