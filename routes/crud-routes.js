@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const cookieSession = require('cookie-session');
 
 const pictures = require('../models/schemas/pictures');
 
@@ -16,7 +15,7 @@ router.get('/api/crud/:user',(req,res)=>{ // random pic fetcher
     })
 })
 
-router.get('/api/crud/profilePics/:user',(req,res)=>{ // profile pics fetcher
+router.get('/api/crud/profilePics/:user',verifyAuthentication,(req,res)=>{ // profile pics fetcher
     const query = {owner:req.params.user}
     pictures.find(query,(err,pics)=>{
       if(err){
@@ -28,7 +27,7 @@ router.get('/api/crud/profilePics/:user',(req,res)=>{ // profile pics fetcher
     })
 })
 
-router.post('/api/crud',(req,res)=>{ // Creates new pic
+router.post('/api/crud',verifyAuthentication,(req,res)=>{ // Creates new pic
   const newPicture = req.body
   pictures.create(newPicture,(err,pics)=>{
     if(err){
@@ -60,7 +59,7 @@ router.put('/api/crud/:_id', (req, res)=>{ // update pic
    })
 })
 
-router.delete('/api/crud/:_id',(req,res)=>{ //deletes pic
+router.delete('/api/crud/:_id',verifyAuthentication,(req,res)=>{ //deletes pic
     const query = {_id: req.params._id};
     pictures.remove(query, (err, pic)=>{
       if(err){
@@ -96,3 +95,12 @@ function randomPic(picArr,user){
   }
   return chosenPic
 }
+
+function verifyAuthentication(req,res,next){
+    if(req.user){
+      if(req.user.username===req.query.username){
+        return next();
+      }
+    }
+    res.end("Access Denied!!")
+  }
