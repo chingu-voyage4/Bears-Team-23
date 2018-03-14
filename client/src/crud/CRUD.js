@@ -23,7 +23,7 @@ export function getProfilePics(){
   }
   const user = userInfo().username;
   return new Promise((resolve,reject)=>{
-    axios.get('/api/crud/profilePics/'+user)
+    axios.get('/api/crud/profilePics/'+user+"?username="+user)
       .then((response)=>{
         resolve(response.data)
       })
@@ -46,7 +46,7 @@ export function createPic(picInfo){
   picInfo.voted = [];
 
   return new Promise((resolve,reject)=>{
-    axios.post('/api/crud',picInfo)
+    axios.post('/api/crud?username='+userInfo().username,picInfo)
       .then((response)=>{
         resolve(response.data)
       })
@@ -82,7 +82,7 @@ export function deletePic(picID){
     return null;
   }
   return new Promise((resolve,reject)=>{
-    axios.delete('/api/crud/'+picID)
+    axios.delete('/api/crud/'+picID+"?username=" + userInfo().username)
     .then((response)=>{
       resolve(response.data)
     })
