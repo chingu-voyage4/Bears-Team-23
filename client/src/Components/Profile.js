@@ -54,9 +54,11 @@ class Profile extends Component {
     e.preventDefault();
     window.cloudinary.openUploadWidget({ cloud_name:'bears23', upload_preset: 'glshf8h1'},
     (error, result) => {
-        this.setState({
-          petImgUrl: result[0].secure_url
-        })
+        if(!error){
+          this.setState({
+            petImgUrl: result[0].secure_url
+          })
+        }
     });
 }
 
