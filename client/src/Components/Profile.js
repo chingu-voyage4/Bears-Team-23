@@ -52,7 +52,7 @@ class Profile extends Component {
 
   uploadWidget = (e) => {
     e.preventDefault();
-    window.cloudinary.openUploadWidget({ cloud_name:'bears23', upload_preset: 'glshf8h1'},
+    window.cloudinary.openUploadWidget({ cloud_name:process.env.REACT_APP_CLOUDINARY_CLOUD_NAME, upload_preset: process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET},
     (error, result) => {
         if(!error){
           this.setState({
@@ -128,10 +128,6 @@ class Profile extends Component {
             <div className = "Profile">
               <p className = "profile__name">Hi there, {this.getUserName()}</p>
               <div className = 'profile__pet'>
-                <div className = "profile__pet__render">
-                    {this.petArray()}
-                </div>
-
                 <div className = "profile__pet__form">
                   <p className = "profile__pet__form__title">Add a new pet!</p>
                   <p>Pet Name</p>
@@ -152,6 +148,10 @@ class Profile extends Component {
                     <img src = {this.state.petImgUrl} className = "profile__pet__form__thumbnail" alt=""/>
                   }
                   <button onClick = {this.uploadPet} className = {submitClass}>Rate my Pet!</button>
+                </div>
+
+                <div className = "profile__pet__render">
+                    {this.petArray()}
                 </div>
               </div>
             </div>

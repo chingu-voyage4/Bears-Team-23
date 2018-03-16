@@ -11,25 +11,27 @@
 }
 
 .profile__name {
+    text-align: center;
     font-size: 2.4rem;
 }
 
 .profile__pet {
     margin-top: 20px;
     display: flex;
-
 }
 
 .profile__pet__render {
     width: 60%;
     display: flex;
     flex-wrap: wrap;
+    order: 0;
 }
 
 
 
 .profile__pet__form {
     width: 40%;
+    order: 1;
 }
 
 .profile__pet__form__title {
@@ -79,8 +81,14 @@
     opacity: 0;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 690px) {
     .Profile {
         margin-top: 150px;
+    }
+    .profile__pet {
+        flex-direction: column;
+    }
+    .profile__pet__form {
+        order: 0;
     }
 }
