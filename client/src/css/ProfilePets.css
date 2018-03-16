@@ -1,8 +1,17 @@
 .ProfilePets{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-left: 30px;
     margin-bottom: 25px;
-    width: 200px;
-    height: 200px;
+    box-shadow: 5px 2.5px 2.5px grey;
+}
+.ProfilePets__name{
+    font-weight: 900;
+}
+.ProfilePets__imgholder{
+    width: 14rem;
+    height: 14rem;
 }
 
 .ProfilePets__img {
@@ -12,4 +21,20 @@
     object-fit: cover;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+.ProfilePets__info{
+    margin-bottom: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.ProfilePets__delete{
+    width: 100%;
+    margin-top: 3px;
+    height: 30px;
+    cursor: pointer;
+    background: #dd7373;
+    color: white;
+    border-radius: 5px;
+    font-size: 1rem;
 }
