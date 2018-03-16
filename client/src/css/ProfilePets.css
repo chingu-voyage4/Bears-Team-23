@@ -1,11 +1,14 @@
 .ProfilePets{
     margin-left: 30px;
     margin-bottom: 25px;
+    width: 200px;
+    height: 200px;
 }
 
 .ProfilePets__img {
-    width: 200px;
-    height: 200px;
+    display:block;
+    margin:auto;
+    width:90%;
     object-fit: cover;
     margin-top: 10px;
     margin-bottom: 10px;
