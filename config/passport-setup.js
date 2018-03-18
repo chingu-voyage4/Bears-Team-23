@@ -22,14 +22,13 @@ passport.use(
         consumerSecret: process.env.CONSUMER_SECRET,
         callbackURL: '/auth/twitter/redirect'
     }, async (accessToken, refreshToken, profile, done) => {
-        const currentUser = await User.findOne({'twitterId': profile.id_str});
-
+        const currentUser = await User.findOne({'twitterId': profile.id});
         if(currentUser){
             done(null, currentUser);
         }
         else {
             const newUser = await new User({
-                twitterId: profile.id_str,
+                twitterId: profile.id,
                 displayName: profile.displayName,
                 username:profile.username
             }).save();

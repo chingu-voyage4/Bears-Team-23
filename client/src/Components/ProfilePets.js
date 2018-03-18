@@ -12,7 +12,7 @@ const ProfilePets = (props) => {
               <img className = 'ProfilePets__img' src = {props.petObject.imgLink} alt = "" />
             </div>
             <div className = 'ProfilePets__info'>
-              <p className = 'ProfilePets__rating'>Cuteness Rating: {props.petObject.avgRating}</p>
+              <p className = 'ProfilePets__rating'>Cuteness Rating: {props.petObject.avgRating.toFixed(1)}</p>
               <button className = 'ProfilePets__delete' onClick={()=>props.deletePic(props.petObject._id)}> Delete </button>
             </div>
         </div>

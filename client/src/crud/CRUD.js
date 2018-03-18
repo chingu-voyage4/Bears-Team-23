@@ -4,8 +4,8 @@ import {store} from './../index.js'
 export const userInfo = ()=>store.getState().user.user
 
 export function getRandomPic(){
+  const user = userInfo().username==="Guest" ? userInfo().userip : userInfo().username
   return new Promise((resolve,reject)=>{
-    const user = userInfo().username==="Guest" ? userInfo().userip : userInfo().username
     axios.get('/api/crud/'+user)
     .then((response)=>{
       resolve(response.data)
@@ -58,7 +58,7 @@ export function createPic(picInfo){
 
 export function updatePic(currentState,newrating){
   const user = userInfo().username==="Guest" ? userInfo().userip : userInfo().username
-  const newAve = ((currentState.avgRating*currentState.totalRatings) + newrating )/(currentState.totalRatings + 1)
+  const newAve = ((currentState.avgRating*currentState.totalRatings) + Number(newrating))/(currentState.totalRatings + 1)
   const updateInfo = {
      totalRatings: currentState.totalRatings+1, //increment from current picture ratings in current state
      // = ((avgRating * totalRatings) + currentRating) / (totalRatings + 1)
