@@ -11,7 +11,6 @@ class AnimalContainer extends React.Component {
       };
     }
     componentDidMount() {
-      console.log("Testing Pull Update")
       this.setRandomPic()
     }
     async setRandomPic(){
@@ -42,26 +41,29 @@ class AnimalContainer extends React.Component {
                     </div>
 
                     <div className = 'AnimalContainer__controls'>
-                      <div className = 'AnimalContainer__controls__petinfo'>
-                        <p>Name: {this.state.currentPic.petName}</p>
-                        <p>Votes: {this.state.currentPic.totalRatings}</p>
-                        <p>Rating: {this.state.currentPic.avgRating.toFixed(1)}</p>
+                      <div className = 'AnimalContainer__controls__top'>
+                        <div className = 'AnimalContainer__controls__petinfo'>
+                          <p>Name: {this.state.currentPic.petName}</p>
+                          <p>Owner: {"@"+this.state.currentPic.owner}</p>
+                          <p>Votes: {this.state.currentPic.totalRatings}</p>
+                          <p>Rating: {this.state.currentPic.avgRating.toFixed(1)}</p>
+                        </div>
+                        <button className = 'AnimalContainer__controls__skip' onClick={this.setRandomPic.bind(this)}><i className="fas fa-step-forward" /></button>
+                        <div className="AnimalContainer__controls__inputarea">
+                          <p>Rate</p>
+                          <input
+                            className="AnimalContainer__controls__inputarea__slider"
+                            type="range"
+                            min="0"
+                            max="10"
+                            onChange={this.handleVoteInput.bind(this)}
+                            value={this.state.inputVoteValue}
+                          />
+                          <p>{this.state.inputVoteValue}</p>
+                        </div>
                       </div>
-                      <button className = 'AnimalContainer__controls__skip' onClick={this.setRandomPic.bind(this)}><i className="fas fa-step-forward" /></button>
-                      <div className="AnimalContainer__controls__inputarea">
-                        <p>Rate</p>
-                        <input
-                          className="AnimalContainer__controls__inputarea__slider"
-                          type="range"
-                          min="0"
-                          max="10"
-                          onChange={this.handleVoteInput.bind(this)}
-                          value={this.state.inputVoteValue}
-                        />
-                        <p>{this.state.inputVoteValue}</p>
-                      </div>
+                      <button className = 'AnimalContainer__vote' onClick={this.voteOnPic.bind(this)}>Vote!</button>
                     </div>
-                    <button className = 'AnimalContainer__vote' onClick={this.voteOnPic.bind(this)}>Vote!</button>
                   </div>
               )
             }
