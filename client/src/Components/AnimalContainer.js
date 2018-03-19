@@ -11,6 +11,7 @@ class AnimalContainer extends React.Component {
       };
     }
     componentDidMount() {
+      console.log("Testing Pull Update")
       this.setRandomPic()
     }
     async setRandomPic(){
