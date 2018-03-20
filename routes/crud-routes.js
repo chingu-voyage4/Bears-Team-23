@@ -4,15 +4,15 @@ const pictures = require('../models/schemas/pictures');
 
 
 router.get('/api/crud/:user',(req,res)=>{ // random pic fetcher
-    pictures.find({},(err,pics)=>{
-      if(err){
-        throw err
-      }
-      else{
-        const picToSend = randomPic(pics,req.params.user)
-        res.json(picToSend ? picToSend : null)
-      }
-    })
+      pictures.find({},(err,pics)=>{
+        if(err){
+          throw err
+        }
+        else{
+          const picToSend = randomPic(pics,req.params.user)
+          res.json(picToSend ? picToSend : null)
+        }
+      })
 })
 
 router.get('/api/crud/profilePics/:user',verifyAuthentication,(req,res)=>{ // profile pics fetcher
@@ -76,6 +76,9 @@ module.exports = router
 
 
 function randomPic(picArr,user){
+  if(!picArr.length){
+    return null
+  }
   let foundPic = false
   let alreadyVoted=[]
   let chosenPic=undefined
