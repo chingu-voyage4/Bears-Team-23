@@ -3,12 +3,10 @@ const bodyParser = require('body-parser');
 const private = require('dotenv').config();
 const passport = require('passport');
 const passportSetup = require('./config/passport-setup');
-const passportSetupGoogle = require('./config/passport-setup-google');
 const router = require('express').Router();
 const cookieSession = require('cookie-session');
 
 const authRoutes = require('./routes/auth-routes');
-const authRoutesGoogle = require('./routes/auth-routes-google');
 const crudRoutes = require('./routes/crud-routes');
 
 const app = express();
@@ -38,7 +36,6 @@ const db = require('./models/db')
 
 
 app.use(authRoutes);
-app.use(authRoutesGoogle);
 app.use(crudRoutes);
 app.get('/',(req,res)=>{
   res.send('test')
