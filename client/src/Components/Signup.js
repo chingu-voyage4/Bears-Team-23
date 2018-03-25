@@ -24,9 +24,9 @@ function mapDispatchToProps(dispatch) {
  //..end redux commands
 
 class Signup extends React.Component {
-  handleLogin() {
+  handleLogin(service) {
     //twitter authentication
-    window.location = "/auth/twitter";
+    window.location = "/auth/"+service;
   }
   handleGuest() {
     //set guest user
@@ -40,10 +40,17 @@ class Signup extends React.Component {
             It's like Hot or Not,<br /> but for pets
             <button
               className="signup__button"
-              onClick={() => this.handleLogin()}
+              onClick={() => this.handleLogin("twitter")}
             >
               <i className="fab fa-twitter" />
               Sign up via Twitter
+            </button>
+            <button
+              className="signup__button"
+              onClick={() => this.handleLogin("google")}
+            >
+              <i className="fab fa-google" />
+              Sign up via google
             </button>
           </div>
           <div className="signup__nonuser">

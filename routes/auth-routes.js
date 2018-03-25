@@ -20,11 +20,17 @@ router.get('/api/profile',isLoggedIn, (req, res)=> {
     let headerObject = req.headers //need for ip
     let ip = (headerObject['x-forwarded-for']||req.socket.remoteAddress).split(",")[0];
     ip = (ip === "::1") ? "local" : ip
+
+    const allAuthServices = ["google","twitter"]
+    const authService = allAuthServices.filter((a)=>{
+      return (req.user[a].username)
+    })[0]
     res.json({
           authenticated: true,
           userip: ip,
-          username: req.user.username ? req.user.username : null ,
-          displayName: req.user.displayName //only expose username and displayname
+          username: req.user[authService].username ? req.user[authService].username : null ,
+          displayName: req.user[authService].displayName,
+          authService:authService
       });
   })
 
@@ -38,7 +44,8 @@ router.get('/api/guest', (req, res) => {
       authenticated: false,
       userip: ip,
       username: "Guest",
-      displayname: "Guest"
+      displayname: "Guest",
+      authService: null
     });
 });
 // route middleware, the main function that checks if a user is logged in
@@ -57,7 +64,8 @@ function isLoggedIn(req, res, next) {
       authenticated: false,
       userip: ip,
       username: null,
-      displayname: null
+      displayname: null,
+      authService:null
     });
 }
   module.exports = router;
