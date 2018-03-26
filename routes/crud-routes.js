@@ -101,7 +101,12 @@ function randomPic(picArr,user){
 
 function verifyAuthentication(req,res,next){
     if(req.user){
-      if(req.user.username===req.query.username){
+      //need to get auth service to verify authentication
+      const allAuthServices = ["google","twitter"]
+      const authService = allAuthServices.filter((a)=>{
+        return (req.user[a].username)
+      })[0]
+      if(req.user[authService].username===req.query.username){
         return next();
       }
     }

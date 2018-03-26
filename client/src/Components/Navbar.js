@@ -13,14 +13,15 @@ function mapStateToProps(state){//only reads store state
 //..end redux commands
 
 class Navbar extends React.Component {
-
-    state = {
+  constructor(props) {
+    super(props);
+    this.state = {
       showDropdown: false
-    }
+    };
+  }
 
-
-  handleLogin(){//twitter authentication
-    window.location="/auth/twitter"
+  handleLogin(service){//twitter authentication
+    window.location="/auth/"+service
   }
   handleLogout(){//twitter authentication
     window.location="/auth/logout"
@@ -40,7 +41,7 @@ class Navbar extends React.Component {
 
 
   getFirstName = () => {
-    return this.props.user.user.displayName.split(" ")[0]; 
+    return this.props.user.user.displayName.split(" ")[0];
   }
 
 
@@ -52,7 +53,7 @@ class Navbar extends React.Component {
 
 
   render() {
-    
+
     let dropdownClass = classnames({
       navbar__dropdown__content: true,
       navbar__dropdown__content__onClick: this.state.showDropdown
@@ -76,7 +77,6 @@ class Navbar extends React.Component {
       return (
         <div className="navbar">
           <img src={logo} className="navbar__img" alt="appfavicon" onClick = {this.goHome}/>
-          <button className="navbar__button" onClick={()=>this.handleLogin()}>Sign in</button>
         </div>
       );
     }

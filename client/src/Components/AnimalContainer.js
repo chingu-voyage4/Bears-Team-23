@@ -7,8 +7,13 @@ class AnimalContainer extends React.Component {
       super(props);
       this.state = {
         currentPic:null,
-        inputVoteValue:5
+        inputVoteValue:5,
+        loadedPic:{
+          holderDiv:'AnimalContainer__imageAreaLoading',
+          image:'AnimalContainer__imageArea__randompetimageHidden'
+        }
       };
+      this.picReady = this.picReady.bind(this)
     }
     componentDidMount() {
       this.setRandomPic()
@@ -17,7 +22,11 @@ class AnimalContainer extends React.Component {
       const randPic = await getRandomPic()
       this.setState({
         currentPic: randPic,
-        inputVoteValue: 5
+        inputVoteValue: 5,
+        loadedPic:{
+          holderDiv:'AnimalContainer__imageAreaLoading',
+          image:'AnimalContainer__imageArea__randompetimageHidden'
+        }
       })
     }
     handleVoteInput(e){
@@ -31,13 +40,26 @@ class AnimalContainer extends React.Component {
         this.setRandomPic()
       }
     }
+    picReady(){
+      this.setState({
+        loadedPic:{
+          holderDiv:'AnimalContainer__imageArea',
+          image:'AnimalContainer__imageArea__randompetimage'
+        }
+      })
+    }
     render() {
 
             if(this.state.currentPic){
               return (
                   <div className = 'AnimalContainer'>
-                    <div className= 'AnimalContainer__imageArea'>
-                      <img className='AnimalContainer__imageArea__randompetimage' src={this.state.currentPic.imgLink} alt=""/>
+                    <div className= {this.state.loadedPic.holderDiv}>
+                      <img
+                        className={this.state.loadedPic.image}
+                        src={this.state.currentPic.imgLink}
+                        onLoad={this.picReady}
+                        alt=""
+                      />
                     </div>
 
                     <div className = 'AnimalContainer__controls'>
