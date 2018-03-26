@@ -22,11 +22,13 @@ const passport = require('passport');
     res.redirect('/');
   });
 
+//logout route for any service provider
   router.get('/auth/logout', (req, res) => {
     req.logout();
     res.redirect('/');
 });
 
+//Other authentication routes for client side use below
 router.get('/api/profile',isLoggedIn, (req, res)=> {
     let headerObject = req.headers //need for ip
     let ip = (headerObject['x-forwarded-for']||req.socket.remoteAddress).split(",")[0];
@@ -39,7 +41,7 @@ router.get('/api/profile',isLoggedIn, (req, res)=> {
     res.json({
           authenticated: true,
           userip: ip,
-          username: req.user[authService].username ? req.user[authService].username : null ,
+          username: req.user[authService].username,
           displayName: req.user[authService].displayName,
           authService:authService
       });

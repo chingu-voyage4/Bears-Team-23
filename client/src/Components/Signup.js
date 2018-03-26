@@ -43,14 +43,14 @@ class Signup extends React.Component {
               onClick={() => this.handleLogin("twitter")}
             >
               <i className="fab fa-twitter" />
-              Sign up via Twitter
+              Continue with Twitter
             </button>
             <button
               className="signup__button"
               onClick={() => this.handleLogin("google")}
             >
               <i className="fab fa-google" />
-              Sign up via google
+              Continue with Google
             </button>
           </div>
           <div className="signup__nonuser">
