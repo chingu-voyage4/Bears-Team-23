@@ -5,9 +5,10 @@ import ProfilePets from './ProfilePets';
 import classnames from 'classnames';
 import { userInfo, getProfilePics, createPic, deletePic } from './../crud/CRUD';
 import './../css/Profile.css';
-
-
+import dotenv from 'dotenv'
 import "./../css/App.css";
+
+
 
 class Profile extends Component {
 
@@ -18,7 +19,8 @@ class Profile extends Component {
       petName: '',
       petImgUrl: ''
     }
-    this.removePic=this.removePic.bind(this)
+    this.removePic=this.removePic.bind(this);
+    dotenv.config();
   }
 
   componentDidMount() {
@@ -52,7 +54,7 @@ class Profile extends Component {
 
   uploadWidget = (e) => {
     e.preventDefault();
-    window.cloudinary.openUploadWidget({ cloud_name:process.env.REACT_APP_CLOUDINARY_CLOUD_NAME, upload_preset: process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET},
+    window.cloudinary.openUploadWidget({ cloud_name:'bears23', upload_preset: 'glshf8h1'},
     (error, result) => {
         if(!error){
           this.setState({
