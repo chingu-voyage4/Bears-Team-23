@@ -6,13 +6,14 @@ class AnimalContainer extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        currentPic:null,
+        currentPic:'',
         inputVoteValue:5,
         loadedPic:{
           holderDiv:'AnimalContainer__imageAreaLoading',
           image:'AnimalContainer__imageArea__randompetimageHidden'
         }
       };
+      this.setRandomPic=this.setRandomPic.bind(this)
       this.picReady = this.picReady.bind(this)
     }
     componentDidMount() {
@@ -20,14 +21,22 @@ class AnimalContainer extends React.Component {
     }
     async setRandomPic(){
       const randPic = await getRandomPic()
-      this.setState({
-        currentPic: randPic,
-        inputVoteValue: 5,
-        loadedPic:{
-          holderDiv:'AnimalContainer__imageAreaLoading',
-          image:'AnimalContainer__imageArea__randompetimageHidden'
-        }
-      })
+      if(!randPic || randPic._id===this.state.currentPic._id){//leave image loaded if same pic as before
+        this.setState({
+          currentPic: randPic,
+          inputVoteValue: 5
+        })
+      }
+      else{
+        this.setState({
+          currentPic: randPic,
+          inputVoteValue: 5,
+          loadedPic:{
+            holderDiv:'AnimalContainer__imageAreaLoading',
+            image:'AnimalContainer__imageArea__randompetimageHidden'
+          }
+        })
+      }
     }
     handleVoteInput(e){
       this.setState({
@@ -58,6 +67,7 @@ class AnimalContainer extends React.Component {
                         className={this.state.loadedPic.image}
                         src={this.state.currentPic.imgLink}
                         onLoad={this.picReady}
+                        onError={this.setRandomPic}
                         alt=""
                       />
                     </div>
@@ -70,7 +80,7 @@ class AnimalContainer extends React.Component {
                           <p>Votes: {this.state.currentPic.totalRatings}</p>
                           <p>Rating: {this.state.currentPic.avgRating.toFixed(1)}</p>
                         </div>
-                        <button className = 'AnimalContainer__controls__skip' onClick={this.setRandomPic.bind(this)}><i className="fas fa-step-forward" /></button>
+                        <button className = 'AnimalContainer__controls__skip' onClick={this.setRandomPic}><i className="fas fa-step-forward" /></button>
                         <div className="AnimalContainer__controls__inputarea">
                           <p>Rate</p>
                           <input
