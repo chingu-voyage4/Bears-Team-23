@@ -37,7 +37,11 @@ class ProfilePets extends React.Component {
                     <p className = 'ProfilePets__name'>{this.props.petObject.petName}</p>
                     <p className = 'ProfilePets__rating'>Cuteness Rating: {Math.round(this.props.petObject.avgRating * 100)}%</p>
                     <p>From {this.props.petObject.totalRatings} votes</p>
-                    <button className = {deleteButtonClass} onClick={()=>this.setState({showDeleteModal: true})}> Delete </button>
+                    <button 
+                        className = {deleteButtonClass} 
+                        onClick={()=>this.setState({showDeleteModal: true})}> 
+                        <i className="far fa-trash-alt"></i>
+                    </button>
                 </div>
                 <DeleteModal 
                 isOpen = {this.state.showDeleteModal}

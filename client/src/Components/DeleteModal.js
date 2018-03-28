@@ -10,9 +10,12 @@ const DeleteModal = (props) => {
             contentLabel="Delete Pet"
             className="Modal"
         >
-        <p>Are you sure you want to delete {props.petName}. This can't be undone.</p>
-        <button onClick = {props.deletePic}>Yes, delete</button>
-        <button onClick = {props.closeModal}>No, bring me back</button>
+        <div className = "Modal_Row">
+            <p className = 'modalText'>Are you sure you want to delete {props.petName}? This cannot undone.</p>
+            <div className = "modalClose" onClick = {props.closeModal}>&#10005;</div>
+        </div>
+
+        <button className = "modalButton__delete"onClick = {props.deletePic}>Yes, delete</button>
         </Modal>
     )
 }
