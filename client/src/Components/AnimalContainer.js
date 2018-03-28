@@ -25,8 +25,9 @@ class AnimalContainer extends React.Component {
         inputVoteValue:e.target.value
       })
     }
-    async voteOnPic(){
-      const response = await updatePic(this.state.currentPic,this.state.inputVoteValue)
+    voteOnPic = async (value)=> {
+      console.log(value);
+      const response = await updatePic(this.state.currentPic, value)
       if(response){
         this.setRandomPic()
       }
@@ -43,12 +44,13 @@ class AnimalContainer extends React.Component {
       if(this.state.currentPic){
         return (
           <div className = "AnimalContainer">
+          <img src = {this.state.currentPic.imgLink} className = "AnimalContainer__img" alt = ""/>
             <p className = "AnimalContainer__petName">{this.state.currentPic.petName}</p>
-            <img src = {this.state.currentPic.imgLink} className = "AnimalContainer__img"/>
+
             <div className = 'AnimalContainer__icons'>
-              <div onClick = {this.setRandomPic}><i className="fas fa-times-circle"></i></div>
+              <div onClick = {()=>this.voteOnPic(0)}><i className="fas fa-times-circle"></i></div>
               <div onClick = {this.setRandomPic}><i className="fas fa-step-forward"></i></div>
-              <div onClick = {this.setRandomPic}><i className="fas fa-check-circle"></i></div>
+              <div onClick = {()=>this.voteOnPic(1)}><i className="fas fa-check-circle"></i></div>
             </div>
           </div>
         )

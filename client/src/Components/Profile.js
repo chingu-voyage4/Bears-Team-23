@@ -126,9 +126,7 @@ class Profile extends Component {
         return (
           <div className="ProfileModel">
             <Navbar />
-
             <div className = "Profile">
-              <p className = "profile__name">Hi there, {this.getUserName()}</p>
               <div className = 'profile__pet'>
                 <div className = "profile__pet__form">
                   <p className = "profile__pet__form__title">Add a new pet!</p>
