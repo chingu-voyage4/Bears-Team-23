@@ -5,7 +5,8 @@
   "scripts": {
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
@@ -18,6 +19,7 @@
     "passport": "^0.4.0",
     "passport-google-oauth": "^1.0.0",
     "passport-twitter": "^1.0.4",
+    "path": "^0.12.7",
     "react-onclickoutside": "^6.7.1"
   },
   "devDependencies": {
@@ -25,12 +27,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dereje1/Bears-Team-23.git"
+    "url": "git+https://github.com/chingu-voyage4/Bears-Team-23.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Dereje1/Bears-Team-23/issues"
+    "url": "https://github.com/chingu-voyage4/Bears-Team-23/issues"
   },
-  "homepage": "https://github.com/Dereje1/Bears-Team-23#readme"
+  "homepage": "https://github.com/chingu-voyage4/Bears-Team-23#readme"
 }
