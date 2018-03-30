@@ -67,7 +67,11 @@ class AnimalContainer extends React.Component {
       if(this.state.currentPic && !this.state.isLoading){
         return (
           <div className = "AnimalContainer">
-          <img src = {this.state.currentPic.imgLink} className = "AnimalContainer__img" alt = ""/>
+          <img 
+            src = {this.state.currentPic.imgLink} 
+            className = "AnimalContainer__img" 
+            alt = ""
+            onError={this.setRandomPic}/>
             <p className = "AnimalContainer__petName">{this.state.currentPic.petName}</p>
 
             <div className = 'AnimalContainer__icons'>
