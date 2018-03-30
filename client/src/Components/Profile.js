@@ -5,9 +5,9 @@ import ProfilePets from './ProfilePets';
 import classnames from 'classnames';
 import { userInfo, getProfilePics, createPic, deletePic } from './../crud/CRUD';
 import './../css/Profile.css';
-
-
 import "./../css/App.css";
+
+
 
 class Profile extends Component {
 
@@ -18,7 +18,7 @@ class Profile extends Component {
       petName: '',
       petImgUrl: ''
     }
-    this.removePic=this.removePic.bind(this)
+    this.removePic=this.removePic.bind(this);
   }
 
   componentDidMount() {
@@ -32,7 +32,6 @@ class Profile extends Component {
 
   getPets = async ()=> {
       const response = await getProfilePics()
-      console.log(response);
       this.setState({
         pets: response
       })
@@ -124,11 +123,11 @@ class Profile extends Component {
         return (
           <div className="ProfileModel">
             <Navbar />
-
             <div className = "Profile">
-              <p className = "profile__name">Hi there, {this.getUserName()}</p>
-              <div className = 'profile__pet'>
-                <div className = "profile__pet__form">
+            <div className = "profile__pet__render">
+              {this.petArray()}
+            </div>
+              <div className = "profile__pet__form">
                   <p className = "profile__pet__form__title">Add a new pet!</p>
                   <p>Pet Name</p>
 
@@ -148,15 +147,11 @@ class Profile extends Component {
                     <img src = {this.state.petImgUrl} className = "profile__pet__form__thumbnail" alt=""/>
                   }
                   <button onClick = {this.uploadPet} className = {submitClass}>Rate my Pet!</button>
-                </div>
-
-                <div className = "profile__pet__render">
-                    {this.petArray()}
-                </div>
               </div>
             </div>
             <Footer />
           </div>
+  
         );
     }
     else {this.handleGuest()}

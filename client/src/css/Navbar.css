@@ -1,33 +1,51 @@
 .navbar {
-  height: 50px;
-  display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
-  padding-top: 7px;
+  padding-top: 12px;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  align-items: center;
 }
 
 .navbar__img {
-  margin-top: 5px;
-  width: 250px;
-  grid-column-start: 3;
-  margin-left: auto;
-  margin-right: auto;
+  flex: 0 1 auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 350px;
   cursor: pointer;
 }
 
-.navbar__button {
+.navbar__links {
+  flex: 0 1 auto;
+  margin-left: auto;
+}
+
+.navbar__items {
+  display: flex;
+  margin-right: 80px;
+}
+
+.navbar__item {
+  color:white;
+  cursor: pointer;
+  margin-right: 20px;
+
+}
+
+.navbar__hamburger {
   position: relative;
-  margin-top: 15px;
-  width: 70px;
   height: 30px;
   background: transparent;
-  border-radius: 8px;
+  border: none;
   color: white;
   cursor: pointer;
-  grid-column-start: 5;
+  font-size: 36px;
+  display: none;
+  right: 45px;
 }
 
 .navbar__dropdown {
-  grid-column-start: 5;
   position: relative;
   margin-top: 5px;
   margin-left: 20px;
@@ -43,8 +61,8 @@
   width: 170px;
   background: white;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  right: 150px;
-  margin-top: 5px;
+  right: 35px;
+  margin-top: 15px;
 }
 
 .navbar__dropdown__content__item {
@@ -58,47 +76,43 @@
   background: #e8f0ff;
 }
 
-
-
-
-.navbar__button:hover {
-  background: white;
-  transition: 0.2s;
-  color: grey;
+@media (max-width:950px) {
+  .navbar__items {
+    margin-right: 40px;
+  }
 }
 
 @media (max-width: 800px) {
+  .navbar__items {
+    display: none;
+  }
+  .navbar__hamburger {
+    display: block;
+  }
+}
+
+@media (max-width: 550px) {
   .navbar__img {
-    grid-column-start: 2;
+    left: 5%;
+    transform: translateX(0%);
+    width: 75%;
   }
-  .navbar__button {
-    grid-column-start: 4;
-    margin-left: 100px;
-  }
+
 }
 
 @media (max-width: 600px) {
-  .navbar {
-    display: block;
+  .navbar__hamburger {
+    position: relative;
+    right: 25px;
   }
-  .navbar__img {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    width: 90%;  
-  }
-  .navbar__button {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    margin-top: 30px;
-    width: 50%;
-    height: 40px;
-    margin-bottom: 20px;
-  }
-
-  .navbar__dropdown__content__onClick { 
-    width: 260px;
-  }
-
 }
+
+@media (max-width: 380px) {
+  .navbar__hamburger {
+    right: 10px
+  }
+}
+
+
+
+

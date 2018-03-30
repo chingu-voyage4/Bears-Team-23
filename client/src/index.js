@@ -8,7 +8,6 @@ import Profile from './Components/Profile';
 import {applyMiddleware, createStore} from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-
 import {Provider} from 'react-redux'
 import {Router, Route, IndexRoute,browserHistory} from 'react-router';
 
@@ -21,8 +20,6 @@ import reducers from './reducers/index'
 const middleware = applyMiddleware(thunk,logger)
 //const middleware = applyMiddleware(thunk)
 export const store = createStore(reducers,middleware)
-
-
 
 
 //decalre all routes of application below

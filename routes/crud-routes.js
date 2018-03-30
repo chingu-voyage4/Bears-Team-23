@@ -79,24 +79,33 @@ function randomPic(picArr,user){
   if(!picArr.length){
     return null
   }
-  let foundPic = false
-  let alreadyVoted=[]
-  let chosenPic=undefined
+  //UNCOMMENT BELOW FOR PRODUCTION
+  // let foundPic = false
+  // let alreadyVoted=[]
+  // let chosenPic=undefined
 
-  while (!foundPic){
-    const randNum = Math.floor(Math.random() * (picArr.length));
-    if(picArr[randNum].voted.includes(user)){
-      alreadyVoted.push(randNum)
-    }
-    else{
-      foundPic = true
-      chosenPic=picArr[randNum]
-    }
-    if (alreadyVoted.length===picArr.length){
-      break;
-    }
-  }
-  return chosenPic
+  // while (!foundPic){
+  //   const randNum = Math.floor(Math.random() * (picArr.length));
+  //   if(picArr[randNum].voted.includes(user)){
+  //     alreadyVoted.push(randNum)
+  //   }
+  //   else{
+  //     foundPic = true
+  //     chosenPic=picArr[randNum]
+  //   }
+  //   if (alreadyVoted.length===picArr.length){
+  //     break;
+  //   }
+  // }
+  // return chosenPic
+
+
+
+  //test code to help with view DELETE FOR PRODUCTION
+
+  const randNum = Math.floor(Math.random() * (picArr.length));
+
+  return picArr[randNum];
 }
 
 function verifyAuthentication(req,res,next){
