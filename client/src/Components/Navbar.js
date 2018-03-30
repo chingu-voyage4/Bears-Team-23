@@ -70,7 +70,7 @@ class Navbar extends React.Component {
               <p className = {'navbar__item'} onClick = {this.handleLogout}>Logout</p>
             </div>
 
-            <div className="navbar__hamburger " onClick = {() => this.showDropdown(true)}><i class="fas fa-bars"></i></div>
+            <div className="navbar__hamburger " onClick = {() => this.showDropdown(true)}><i className="fas fa-bars"></i></div>
               <div className = {dropdownClass}>
                 <p className = "navbar__dropdown__content__item" onClick = {this.linkToProfile}>Profile</p>
                 <p className = "navbar__dropdown__content__item" onClick = {this.handleLogout}>Logout</p>
