@@ -6,7 +6,8 @@ class AnimalContainer extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        currentPic:null
+        currentPic:null,
+        isLoading: false
       };
       this.picReady = this.picReady.bind(this)
     }
@@ -15,8 +16,10 @@ class AnimalContainer extends React.Component {
     }
     
     setRandomPic = async ()=> {
+      this.setState({isLoading: true});
       const randPic = await getRandomPic()
       this.setState({
+        isLoading: false,
         currentPic: randPic,
       })
     }
@@ -26,7 +29,7 @@ class AnimalContainer extends React.Component {
       })
     }
     voteOnPic = async (value)=> {
-      console.log(value);
+      this.setState({isLoading: true});
       const response = await updatePic(this.state.currentPic, value)
       if(response){
         this.setRandomPic()
@@ -41,7 +44,7 @@ class AnimalContainer extends React.Component {
       })
     }
     render() {
-      if(this.state.currentPic){
+      if(this.state.currentPic && !this.state.isLoading){
         return (
           <div className = "AnimalContainer">
           <img src = {this.state.currentPic.imgLink} className = "AnimalContainer__img" alt = ""/>
@@ -52,6 +55,14 @@ class AnimalContainer extends React.Component {
               <div onClick = {this.setRandomPic}><i className="fas fa-step-forward"></i></div>
               <div onClick = {()=>this.voteOnPic(1)}><i className="fas fa-check-circle"></i></div>
             </div>
+
+          </div>
+        )
+      }
+      else if (this.state.currentPic && this.state.isLoading) {
+        return (
+          <div className = 'AnimalContainer'>
+            <div className = 'AnimalContainer__imageAreaLoading' />
           </div>
         )
       }

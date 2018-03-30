@@ -161,7 +161,7 @@
   background: #f49b42;
   border-radius: .25rem;
 }
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
     .AnimalContainer {
         margin-top: 150px;
     }
@@ -183,7 +183,7 @@
       cursor: pointer;
     }
 
-}
+} */
 
 @keyframes picloading {
   0%{
@@ -194,5 +194,23 @@
   }
   100%{
     transform: rotate(720deg) scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .AnimalContainer {
+    width: 90%;
+  }
+}
+
+@media (max-width: 400px) {
+  .AnimalContainer__img {
+    width: 85%;
+  }
+}
+
+@media(max-width: 380px) {
+  .AnimalContainer__petName {
+    font-size: 36px;
   }
 }

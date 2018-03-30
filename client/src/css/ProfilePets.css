@@ -5,6 +5,7 @@
     border-radius: 5px;
     transition: .3s;
     padding-bottom: 10px;
+    height: 290px;
 }
 
 .ProfilePets__hover {
@@ -51,3 +52,38 @@
     opacity: 1;
     transition: .3s;
 }
+
+@media (max-width: 635px) {
+    .ProfilePets {
+        width: 90%;
+        height: 210px;
+        display: flex;
+        margin-left: 0px;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .ProfilePets__info {
+        margin-top: 10px;
+    }
+
+    .ProfilePets__delete {
+        background: transparent;
+    }
+    .ProfilePets__img {
+        width: 150px;
+        height: 150px;
+    }
+    .ProfilePets {
+        height: 170px;
+    }
+    
+    .ProfilePets__delete {
+        top: 0px;
+        left: 0px;
+        margin-top: 10px;
+    }
+
+}
+
+

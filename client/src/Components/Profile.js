@@ -127,8 +127,10 @@ class Profile extends Component {
           <div className="ProfileModel">
             <Navbar />
             <div className = "Profile">
-              <div className = 'profile__pet'>
-                <div className = "profile__pet__form">
+            <div className = "profile__pet__render">
+              {this.petArray()}
+            </div>
+              <div className = "profile__pet__form">
                   <p className = "profile__pet__form__title">Add a new pet!</p>
                   <p>Pet Name</p>
 
@@ -148,15 +150,11 @@ class Profile extends Component {
                     <img src = {this.state.petImgUrl} className = "profile__pet__form__thumbnail" alt=""/>
                   }
                   <button onClick = {this.uploadPet} className = {submitClass}>Rate my Pet!</button>
-                </div>
-
-                <div className = "profile__pet__render">
-                    {this.petArray()}
-                </div>
               </div>
             </div>
             <Footer />
           </div>
+  
         );
     }
     else {this.handleGuest()}
