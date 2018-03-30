@@ -113,7 +113,7 @@
   max-height: 100%;
 }
 .AnimalContainer__imageArea__randompetimageHidden{
-  visibility: hidden;
+  display: none;
 }
 .AnimalContainer__controls{
   display: flex;

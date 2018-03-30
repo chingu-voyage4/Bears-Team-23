@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./Components/App";
-import registerServiceWorker from "./registerServiceWorker";
+import { unregister } from "./registerServiceWorker";
 import Profile from './Components/Profile';
 //Added below for redux store
 import {applyMiddleware, createStore} from 'redux';
@@ -37,4 +37,4 @@ const Routes = (
 //end redux
 
 ReactDOM.render(Routes, document.getElementById("root"));
-registerServiceWorker();
+unregister();
