@@ -35,7 +35,6 @@ class Navbar extends React.Component {
   }
 
   handleClickOutside = (evt)=> {
-    console.log('something');
     this.showDropdown(false);
   }
 

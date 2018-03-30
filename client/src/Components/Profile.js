@@ -32,7 +32,6 @@ class Profile extends Component {
 
   getPets = async ()=> {
       const response = await getProfilePics()
-      console.log(response);
       this.setState({
         pets: response
       })
