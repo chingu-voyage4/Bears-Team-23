@@ -35,7 +35,6 @@ class Navbar extends React.Component {
   }
 
   handleClickOutside = (evt)=> {
-    console.log('something');
     this.showDropdown(false);
   }
 
@@ -63,14 +62,21 @@ class Navbar extends React.Component {
       return (
         <div className="navbar">
           <img src={logo} className="navbar__img" alt="appfavicon" onClick = {this.goHome}/>
-          <div className = "navbar__dropdown">
-            <button className="navbar__button " onClick = {() => this.showDropdown(true)}>Hi {this.getFirstName()}</button>
-            <div className = {dropdownClass}>
-              <p className = "navbar__dropdown__content__item" onClick = {this.linkToProfile}>Profile</p>
-              <p className = "navbar__dropdown__content__item" onClick = {this.handleLogout}>Logout</p>
+          
+          <div className = 'navbar__links'>
+            <div className = 'navbar__items'>
+              <p className = {'navbar__item'} onClick = {this.linkToProfile}>Profile</p>
+              <p className = {'navbar__item'} onClick = {this.handleLogout}>Logout</p>
+            </div>
+
+            <div className="navbar__hamburger " onClick = {() => this.showDropdown(true)}><i className="fas fa-bars"></i></div>
+              <div className = {dropdownClass}>
+                <p className = "navbar__dropdown__content__item" onClick = {this.linkToProfile}>Profile</p>
+                <p className = "navbar__dropdown__content__item" onClick = {this.handleLogout}>Logout</p>
             </div>
           </div>
         </div>
+
       );
     }
     else {
