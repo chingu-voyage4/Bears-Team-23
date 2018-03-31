@@ -92,16 +92,27 @@ function randomPic(picArr,user){
       foundPic = true
       chosenPic=picArr[randNum]
     }
-    if (alreadyVoted.length===picArr.length){
+    if (alreadyVoted.length===picArr.length){//By this point all pics would have been voted on
       break;
     }
   }
+  //if all pics have been voted on then chosenPic would still be undefined, so we could....
+  if(!chosenPic){
+    //use last random number generated to randomly pick an image
+    chosenPic = picArr[randNum]
+    chosenPic.votable = false
+  }
+  else{//already a votable image has been found
+    chosenPic.votable = true
+  }
+
   return chosenPic
 }
 
 function verifyAuthentication(req,res,next){
     if(req.user){
       //need to get auth service to verify authentication
+      console.log(req.user)
       const allAuthServices = ["google","twitter"]
       const authService = allAuthServices.filter((a)=>{
         return (req.user[a].username)
