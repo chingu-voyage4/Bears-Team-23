@@ -83,21 +83,22 @@ function randomPic(picArr,user){
 
   while (true){
     const randNum = Math.floor(Math.random() * (picArr.length));
-
+    //unable to attach new property (node/mongoose response related ??) so must do a deep copy
+    chosenPic=JSON.parse(JSON.stringify(picArr[randNum]))
     if(picArr[randNum].voted.includes(user)){
       if(!alreadyVoted.includes(randNum)){
         alreadyVoted.push(randNum)
       }
+      else{
+        continue;
+      }
     }
     else{//found an unvoted pic
-      //unable to attach new property (mongoose response related ??) so must do a deep copy
-      chosenPic=JSON.parse(JSON.stringify(picArr[randNum]))
       chosenPic.votable = true //new property only for client one time use not to be included in dB
       break;
     }
 
     if (alreadyVoted.length===picArr.length){// all pics in DB have been voted on at this point
-      chosenPic = JSON.parse(JSON.stringify(picArr[randNum]))
       chosenPic.votable = false
       break;
     }
