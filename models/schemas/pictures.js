@@ -3,7 +3,12 @@
 // add/modify accordingly for properties belonging to the documents in the pictures collection
 const mongoose = require('mongoose');
 const picSchema = mongoose.Schema({
-  owner: String,  //twitter username or similar ..
+  owner: {
+            ip           : String,
+            displayName  : String,
+            username     : String,
+            authService  : String
+  },
   imgDescription:String,
   petName: String, // could be pet name for instance ?
   imgLink:String, // cloudinary link

@@ -13,7 +13,7 @@ var userSchema = mongoose.Schema({
   google: {
             id    : String,
             displayName  : String,
-            username  : String   //using email here for username since googel soes not return username
+            username  : String   //using id here for username since googel soes not return username
   }
 });
 

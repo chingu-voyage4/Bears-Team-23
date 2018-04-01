@@ -9,14 +9,14 @@ router.get('/api/crud/:user',(req,res)=>{ // random pic fetcher
           throw err
         }
         else{
-          const picToSend = randomPic(pics,req.params.user)
-          res.json(picToSend ? picToSend : null)
+          const picToSend = randomPic([...pics],req.params.user)
+          res.json(picToSend)
         }
       })
 })
 
 router.get('/api/crud/profilePics/:user',verifyAuthentication,(req,res)=>{ // profile pics fetcher
-    const query = {owner:req.params.user}
+    const query = {'owner.username':req.params.user}
     pictures.find(query,(err,pics)=>{
       if(err){
         throw err
@@ -74,45 +74,40 @@ router.delete('/api/crud/:_id',verifyAuthentication,(req,res)=>{ //deletes pic
 
 module.exports = router
 
-
 function randomPic(picArr,user){
   if(!picArr.length){
     return null
   }
-  let foundPic = false
+  let chosenPic
   let alreadyVoted=[]
-  let chosenPic=undefined
 
-  while (!foundPic){
+  while (true){
     const randNum = Math.floor(Math.random() * (picArr.length));
+
     if(picArr[randNum].voted.includes(user)){
-      alreadyVoted.push(randNum)
+      if(!alreadyVoted.includes(randNum)){
+        alreadyVoted.push(randNum)
+      }
     }
-    else{
-      foundPic = true
-      chosenPic=picArr[randNum]
+    else{//found an unvoted pic
+      //unable to attach new property (mongoose response related ??) so must do a deep copy
+      chosenPic=JSON.parse(JSON.stringify(picArr[randNum]))
+      chosenPic.votable = true //new property only for client one time use not to be included in dB
+      break;
     }
-    if (alreadyVoted.length===picArr.length){//By this point all pics would have been voted on
+
+    if (alreadyVoted.length===picArr.length){// all pics in DB have been voted on at this point
+      chosenPic = JSON.parse(JSON.stringify(picArr[randNum]))
+      chosenPic.votable = false
       break;
     }
   }
-  //if all pics have been voted on then chosenPic would still be undefined, so we could....
-  if(!chosenPic){
-    //use last random number generated to randomly pick an image
-    chosenPic = picArr[randNum]
-    chosenPic.votable = false
-  }
-  else{//already a votable image has been found
-    chosenPic.votable = true
-  }
-
   return chosenPic
 }
 
 function verifyAuthentication(req,res,next){
     if(req.user){
       //need to get auth service to verify authentication
-      console.log(req.user)
       const allAuthServices = ["google","twitter"]
       const authService = allAuthServices.filter((a)=>{
         return (req.user[a].username)

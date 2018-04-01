@@ -15,33 +15,14 @@ class AnimalContainer extends React.Component {
     componentDidMount() {
       this.setRandomPic()
     }
-    
+
     setRandomPic = async ()=> {
       this.setState({isLoading: true});
       const randPic = await getRandomPic();
-
       this.setState({
         isLoading: false,
         currentPic: randPic,
       })
-
-      // if(!randPic || randPic._id===this.state.currentPic._id){//leave image loaded if same pic as before
-      //   this.setState({
-      //     currentPic: randPic,
-      //     inputVoteValue: 5
-      //   })
-      // }
-      // else{
-      //   this.setState({
-      //     currentPic: randPic,
-      //     inputVoteValue: 5,
-      //     loadedPic:{
-      //       holderDiv:'AnimalContainer__imageAreaLoading',
-      //       image:'AnimalContainer__imageArea__randompetimageHidden'
-      //     }
-      //   })
-      // }
-
     }
     handleVoteInput(e){
       this.setState({
@@ -90,7 +71,7 @@ class AnimalContainer extends React.Component {
           </div>
         )
       }
-          
+
       else {
         return(
           <div className = 'AnimalContainer'>
