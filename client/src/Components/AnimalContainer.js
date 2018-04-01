@@ -10,42 +10,17 @@ class AnimalContainer extends React.Component {
         isLoading: false
       };
       this.setRandomPic=this.setRandomPic.bind(this)
-      this.picReady = this.picReady.bind(this)
     }
     componentDidMount() {
       this.setRandomPic()
     }
-    
+
     setRandomPic = async ()=> {
       this.setState({isLoading: true});
       const randPic = await getRandomPic();
-
       this.setState({
         isLoading: false,
         currentPic: randPic,
-      })
-
-      // if(!randPic || randPic._id===this.state.currentPic._id){//leave image loaded if same pic as before
-      //   this.setState({
-      //     currentPic: randPic,
-      //     inputVoteValue: 5
-      //   })
-      // }
-      // else{
-      //   this.setState({
-      //     currentPic: randPic,
-      //     inputVoteValue: 5,
-      //     loadedPic:{
-      //       holderDiv:'AnimalContainer__imageAreaLoading',
-      //       image:'AnimalContainer__imageArea__randompetimageHidden'
-      //     }
-      //   })
-      // }
-
-    }
-    handleVoteInput(e){
-      this.setState({
-        inputVoteValue:e.target.value
       })
     }
     voteOnPic = async (value)=> {
@@ -55,21 +30,13 @@ class AnimalContainer extends React.Component {
         this.setRandomPic()
       }
     }
-    picReady(){
-      this.setState({
-        loadedPic:{
-          holderDiv:'AnimalContainer__imageArea',
-          image:'AnimalContainer__imageArea__randompetimage'
-        }
-      })
-    }
     render() {
       if(this.state.currentPic && !this.state.isLoading){
         return (
           <div className = "AnimalContainer">
-          <img 
-            src = {this.state.currentPic.imgLink} 
-            className = "AnimalContainer__img" 
+          <img
+            src = {this.state.currentPic.imgLink}
+            className = "AnimalContainer__img"
             alt = ""
             onError={this.setRandomPic}/>
             <p className = "AnimalContainer__petName">{this.state.currentPic.petName}</p>
@@ -90,11 +57,11 @@ class AnimalContainer extends React.Component {
           </div>
         )
       }
-          
+
       else {
         return(
           <div className = 'AnimalContainer'>
-            <p>No more Picures to Vote on !!</p>
+            <p>No Pets Found !!</p>
           </div>
         )
       }

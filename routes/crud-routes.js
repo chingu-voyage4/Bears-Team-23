@@ -9,14 +9,14 @@ router.get('/api/crud/:user',(req,res)=>{ // random pic fetcher
           throw err
         }
         else{
-          const picToSend = randomPic(pics,req.params.user)
-          res.json(picToSend ? picToSend : null)
+          const picToSend = randomPic([...pics],req.params.user)
+          res.json(picToSend)
         }
       })
 })
 
 router.get('/api/crud/profilePics/:user',verifyAuthentication,(req,res)=>{ // profile pics fetcher
-    const query = {owner:req.params.user}
+    const query = {'owner.username':req.params.user}
     pictures.find(query,(err,pics)=>{
       if(err){
         throw err
@@ -74,38 +74,36 @@ router.delete('/api/crud/:_id',verifyAuthentication,(req,res)=>{ //deletes pic
 
 module.exports = router
 
-
 function randomPic(picArr,user){
   if(!picArr.length){
     return null
   }
-  //UNCOMMENT BELOW FOR PRODUCTION
-  // let foundPic = false
-  // let alreadyVoted=[]
-  // let chosenPic=undefined
+  let chosenPic
+  let alreadyVoted=[]
 
-  // while (!foundPic){
-  //   const randNum = Math.floor(Math.random() * (picArr.length));
-  //   if(picArr[randNum].voted.includes(user)){
-  //     alreadyVoted.push(randNum)
-  //   }
-  //   else{
-  //     foundPic = true
-  //     chosenPic=picArr[randNum]
-  //   }
-  //   if (alreadyVoted.length===picArr.length){
-  //     break;
-  //   }
-  // }
-  // return chosenPic
+  while (true){
+    const randNum = Math.floor(Math.random() * (picArr.length));
+    //unable to attach new property (node/mongoose response related ??) so must do a deep copy
+    chosenPic=JSON.parse(JSON.stringify(picArr[randNum]))
+    if(picArr[randNum].voted.includes(user)){
+      if(!alreadyVoted.includes(randNum)){
+        alreadyVoted.push(randNum)
+      }
+      else{
+        continue;
+      }
+    }
+    else{//found an unvoted pic
+      chosenPic.votable = true //new property only for client one time use not to be included in dB
+      break;
+    }
 
-
-
-  //test code to help with view DELETE FOR PRODUCTION
-
-  const randNum = Math.floor(Math.random() * (picArr.length));
-
-  return picArr[randNum];
+    if (alreadyVoted.length===picArr.length){// all pics in DB have been voted on at this point
+      chosenPic.votable = false
+      break;
+    }
+  }
+  return chosenPic
 }
 
 function verifyAuthentication(req,res,next){

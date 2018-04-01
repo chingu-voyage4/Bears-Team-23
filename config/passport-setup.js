@@ -60,7 +60,7 @@ passport.use(
                 google:{
                   id: profile.id,
                   displayName: profile.displayName,
-                  username:profile.emails[0].value
+                  username:profile.id
                 }
               }
           ).save();

@@ -39,7 +39,12 @@ export function createPic(picInfo){
     return null;
   }
 
-  picInfo.owner = userInfo().username;
+  picInfo.owner = {
+    ip           : userInfo().userip,
+    displayName  : userInfo().displayName,
+    username     : userInfo().username,
+    authService  : userInfo().authService
+  }
   picInfo.timeStamp = Date.now();
   picInfo.totalRatings = 0;
   picInfo.avgRating = 0;
