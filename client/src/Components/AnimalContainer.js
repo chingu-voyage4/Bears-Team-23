@@ -10,7 +10,6 @@ class AnimalContainer extends React.Component {
         isLoading: false
       };
       this.setRandomPic=this.setRandomPic.bind(this)
-      this.picReady = this.picReady.bind(this)
     }
     componentDidMount() {
       this.setRandomPic()
@@ -24,11 +23,6 @@ class AnimalContainer extends React.Component {
         currentPic: randPic,
       })
     }
-    handleVoteInput(e){
-      this.setState({
-        inputVoteValue:e.target.value
-      })
-    }
     voteOnPic = async (value)=> {
       this.setState({isLoading: true});
       const response = await updatePic(this.state.currentPic, value)
@@ -36,21 +30,13 @@ class AnimalContainer extends React.Component {
         this.setRandomPic()
       }
     }
-    picReady(){
-      this.setState({
-        loadedPic:{
-          holderDiv:'AnimalContainer__imageArea',
-          image:'AnimalContainer__imageArea__randompetimage'
-        }
-      })
-    }
     render() {
       if(this.state.currentPic && !this.state.isLoading){
         return (
           <div className = "AnimalContainer">
-          <img 
-            src = {this.state.currentPic.imgLink} 
-            className = "AnimalContainer__img" 
+          <img
+            src = {this.state.currentPic.imgLink}
+            className = "AnimalContainer__img"
             alt = ""
             onError={this.setRandomPic}/>
             <p className = "AnimalContainer__petName">{this.state.currentPic.petName}</p>
@@ -75,7 +61,7 @@ class AnimalContainer extends React.Component {
       else {
         return(
           <div className = 'AnimalContainer'>
-            <p>No more Picures to Vote on !!</p>
+            <p>No Pets Found !!</p>
           </div>
         )
       }
