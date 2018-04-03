@@ -41,6 +41,23 @@
   justify-content: space-between;
 }
 
+.skipButton {
+  position: relative;
+  left: 13px;
+}
+
+.AnimalContainer__icons__rating {
+  font-size: 36px;
+  text-align: left;
+  position: relative;
+  bottom: 10px;
+}
+
+.AnimalContainer__icons__rating__after {
+  font-size: 24px;
+  text-align: center;
+}
+
 .fa-times-circle {
   color: #e03131;
 }
