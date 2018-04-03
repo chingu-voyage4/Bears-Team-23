@@ -15,8 +15,11 @@ class AnimalContainer extends React.Component {
     componentDidMount() {
       this.setRandomPic()
     }
-
+    componentWillUnmount() {
+      clearInterval(this.timer)
+    }
     setRandomPic = async ()=> {
+      clearInterval(this.timer)
       this.setState({isLoading: true});
       const randPic = await getRandomPic();
       this.setState({
@@ -33,8 +36,7 @@ class AnimalContainer extends React.Component {
           isLoading: false,
           showSkip: false
         });
-        setTimeout(()=>this.setRandomPic(), 1300)
-
+        this.timer = setTimeout(()=>this.setRandomPic(), 1300)
       }
     }
 
