@@ -103,7 +103,14 @@ function randomPic(picArr,user){
       break;
     }
   }
-  return chosenPic
+  const {imgLink,petName,avgRating,votable} = chosenPic
+  const picked = {
+    imgLink:imgLink,
+    petName:petName,
+    avgRating:avgRating,
+    votable:votable
+  };
+  return picked
 }
 
 function verifyAuthentication(req,res,next){
