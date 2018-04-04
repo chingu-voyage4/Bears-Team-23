@@ -40,23 +40,25 @@ router.post('/api/crud',verifyAuthentication,(req,res)=>{ // Creates new pic
 })
 
 router.put('/api/crud/:_id', (req, res)=>{ // update pic
-   const updateInfo = {
-     totalRatings:req.body.totalRatings,
-     avgRating:req.body.avgRating,
-     voted:req.body.voted
-   };
-   const picID = req.params._id;
-
-   const update = { '$set': updateInfo};
-   const modified = {new: true}; //optional, if true responds with the modified document
-   pictures.findByIdAndUpdate(picID, update, modified, (err, pic)=>{
-       if(err){
-         throw err;
-       }
-       else{
-         res.json(pic);
-       }
-   })
+  const picID = req.params._id;
+  findSinglePic(picID).then((picObject)=>{
+    const newAve = ((picObject.avgRating*picObject.totalRatings) + Number(req.body.newrating))/(picObject.totalRatings + 1)
+    const updateInfo = {
+       totalRatings: picObject.totalRatings+1,
+       avgRating: newAve, //compute from current picture ratings in current state
+       voted: [...picObject.voted,req.body.user] //add current voteer in old voted array
+    }
+    const update = { '$set': updateInfo};
+    const modified = {new: true}; //optional, if true responds with the modified document
+    pictures.findByIdAndUpdate(picID, update, modified, (err, pic)=>{
+        if(err){
+          throw err;
+        }
+        else{
+          res.json(clientFilter(pic));
+        }
+    })
+  })
 })
 
 router.delete('/api/crud/:_id',verifyAuthentication,(req,res)=>{ //deletes pic
@@ -105,6 +107,20 @@ function randomPic(picArr,user){
   }
 
   return clientFilter(chosenPic)
+}
+
+
+function findSinglePic(picid){
+  return new Promise((resolve,reject)=>{
+    pictures.find({'_id':picid},(err,pic)=>{
+      if(err){
+        reject(err)
+      }
+      else{
+        resolve(pic[0])
+      }
+    })
+  })
 }
 
 function clientFilter(fullObj){

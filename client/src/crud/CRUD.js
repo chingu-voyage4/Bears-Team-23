@@ -63,12 +63,9 @@ export function createPic(picInfo){
 
 export function updatePic(currentState,newrating){
   const user = userInfo().username==="Guest" ? userInfo().userip : userInfo().username
-  const newAve = ((currentState.avgRating*currentState.totalRatings) + Number(newrating))/(currentState.totalRatings + 1)
   const updateInfo = {
-     totalRatings: currentState.totalRatings+1, //increment from current picture ratings in current state
-     // = ((avgRating * totalRatings) + currentRating) / (totalRatings + 1)
-     avgRating: newAve, //compute from current picture ratings in current state
-     voted: [...currentState.voted,user] //add current voteer in old voted array
+    newrating:newrating,
+    user:user
   }
   return new Promise((resolve,reject)=>{
     axios.put('/api/crud/'+currentState._id,updateInfo)
