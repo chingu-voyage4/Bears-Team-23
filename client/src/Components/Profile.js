@@ -51,7 +51,12 @@ class Profile extends Component {
 
   uploadWidget = (e) => {
     e.preventDefault();
-    window.cloudinary.openUploadWidget({ cloud_name:process.env.REACT_APP_CLOUDINARY_CLOUD_NAME, upload_preset: process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET},
+    window.cloudinary.openUploadWidget({ 
+      cloud_name: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME, 
+      upload_preset: process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET,
+      cropping: 'server',
+      cropping_aspect_ratio: 1
+    },
     (error, result) => {
         if(!error){
           this.setState({
