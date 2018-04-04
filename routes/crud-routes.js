@@ -85,7 +85,7 @@ function randomPic(picArr,user){
     const randNum = Math.floor(Math.random() * (picArr.length));
     //unable to attach new property (node/mongoose response related ??) so must do a deep copy
     chosenPic=JSON.parse(JSON.stringify(picArr[randNum]))
-    if(picArr[randNum].voted.includes(user)){
+    if(chosenPic.voted.includes(user)){
       if(!alreadyVoted.includes(randNum)){
         alreadyVoted.push(randNum)
       }
@@ -103,8 +103,14 @@ function randomPic(picArr,user){
       break;
     }
   }
-  const {imgLink,petName,avgRating,votable} = chosenPic
+
+  return clientFilter(chosenPic)
+}
+
+function clientFilter(fullObj){
+  const {_id,imgLink,petName,avgRating,votable} = fullObj
   const picked = {
+    _id:_id,
     imgLink:imgLink,
     petName:petName,
     avgRating:avgRating,
