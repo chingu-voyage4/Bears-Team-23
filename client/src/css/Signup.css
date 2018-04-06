@@ -81,7 +81,7 @@
   position: relative;
   top: 50%;
   left: 50%;
-  transform: translate(-95%, -50%)
+  transform: translate(-100%, -50%)
 }
 
 .signup__button__google__text {
