@@ -73,6 +73,41 @@ router.delete('/api/crud/:_id',verifyAuthentication,(req,res)=>{ //deletes pic
     })
 })
 
+router.get('/api/crud/orderedpics/:order/:limit',(req,res)=>{ 
+  let sortType;
+  
+  if(req.params.order == 'ascending') {
+    sortType = 'avgRating';
+  }
+  else if (req.params.order == 'descending') {
+    sortType = '-avgRating';
+  }
+  else {
+    res.send("Please specify ascending or descending");
+  }
+
+  // get ordered list
+  pictures.find({totalRatings: {$gt: 5}})
+  .sort(sortType) 
+  .limit(parseInt(req.params.limit))
+  .exec((err,pics)=> {
+    if(err){
+      throw err
+    }
+    else{
+      const picsObject = pics.map((pic)=> {
+        return ({
+          petName: pic.petName,
+          imgLink: pic.imgLink,
+          totalRatings: pic.totalRatings,
+          avgRating: pic.avgRating
+        })
+      })
+      res.send(picsObject);
+    }
+  })
+})
+
 
 module.exports = router
 

@@ -93,3 +93,15 @@ export function deletePic(picID){
     })
   })
 }
+
+export function getRankings(order, limit) {
+  return new Promise((resolve, reject)=> {
+    axios.get(`/api/crud/orderedpics/${order}/${limit}`)
+      .then((response)=>{
+        resolve(response.data)
+      })
+      .catch((err)=>{
+        reject(err.data)
+      })
+  });
+}
