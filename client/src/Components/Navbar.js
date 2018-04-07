@@ -58,13 +58,15 @@ class Navbar extends React.Component {
 
     let dropdownClass = classnames({
       navbar__dropdown__content: true,
-      navbar__dropdown__content__onClick: this.state.showDropdown
+      navbar__dropdown__content__onClick: this.state.showDropdown,
     })
+
+
 
     if(this.props.user.user.authenticated){
       return (
         <div className="navbar">
-          <img src={logo} className="navbar__img" alt="appfavicon" onClick = {this.goHome}/>
+          <img src={logo} className= 'navbar__img' alt="appfavicon" onClick = {this.goHome}/>
           
           <div className = 'navbar__links'>
             <div className = 'navbar__items'>
@@ -87,7 +89,7 @@ class Navbar extends React.Component {
     else {
       return (
         <div className="navbar">
-          <img src={logo} className="navbar__img" alt="appfavicon" onClick = {this.goHome}/>
+          <img src={logo} className="navbar__img navbar__img__center" alt="appfavicon" onClick = {this.goHome}/>
         </div>
       );
     }

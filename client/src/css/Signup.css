@@ -104,7 +104,6 @@
 @media (max-width: 600px) {
 
   .signup {
-    margin-top: 150px;
     flex-direction: column;
     width: 90%;
   }
@@ -117,4 +116,10 @@
     width: 100%;
     height: 40%;
   }
+}
+
+@media (max-width: 340px) {
+    .signup__user {
+      font-size: 30px;
+    }
 }

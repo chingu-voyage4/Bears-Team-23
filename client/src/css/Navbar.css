@@ -98,6 +98,12 @@
     width: 75%;
   }
 
+  .navbar__img__center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
 }
 
 @media (max-width: 600px) {
