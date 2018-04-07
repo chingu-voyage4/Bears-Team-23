@@ -44,23 +44,52 @@
 }
 
 .signup__button {
-  width: 180px;
+  width: 200px;
   height: 50px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 30px;
-  background: #00aced;
   font-size: 0.9rem;
-  color: #fff;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
+  border-radius: 3px;
 }
 
-.signup__button:hover {
-  background: #1dcaff;
+.signup__button__twitter {
+  background: #00aced;
+  margin-top: 10px;
+  color: #fff;
 }
+
+.signup__button__google {
+  margin-top: 30px;
+  background: #4285F4;
+  display: flex;
+  font-size: 14px;
+  color: #fff;
+}
+
+.signup__button__google__left {
+  background: #fff;
+  height: 46px;
+  width: 50px;
+  margin-left: 2px;
+
+}
+.googleLogo{
+  height: 25px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -50%)
+}
+
+.signup__button__google__text {
+  margin-top: 13px;
+  margin-left: 6px;
+
+}
+
 
 .fa-twitter,.fa-google {
   display: inline-block;

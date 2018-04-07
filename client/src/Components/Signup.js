@@ -1,6 +1,6 @@
 import React from "react";
 import "./../css/Signup.css";
-
+import googleLogo from '../img/googleLogo.png'
 //use below to establish communication bewteen store and individual component
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -39,20 +39,25 @@ class Signup extends React.Component {
           <div className="signup__user">
             It's like Hot or Not,<br /> but for pets
             <button
-              className="signup__button"
+              className="signup__button signup__button__google"
+              onClick={() => this.handleLogin("google")}
+            >
+            <div className = 'signup__button__google__left'>
+              <img className = 'googleLogo'src = {googleLogo} alt = ""/>
+            </div>
+            <p className = 'signup__button__google__text'>Continue with Google</p>
+            </button>
+            
+            <button
+              className="signup__button signup__button__twitter"
               onClick={() => this.handleLogin("twitter")}
             >
               <i className="fab fa-twitter" />
               Continue with Twitter
             </button>
-            <button
-              className="signup__button"
-              onClick={() => this.handleLogin("google")}
-            >
-              <i className="fab fa-google" />
-              Continue with Google
-            </button>
+
           </div>
+
           <div className="signup__nonuser">
             <p>
             {this.props.user.user.displayName}
