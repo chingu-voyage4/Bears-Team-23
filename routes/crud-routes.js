@@ -41,7 +41,8 @@ router.post('/api/crud',verifyAuthentication,(req,res)=>{ // Creates new pic
 
 router.put('/api/crud/:_id', (req, res)=>{ // update pic
   const picID = req.params._id;
-  findSinglePic(picID).then((picObject)=>{
+  pictures.findById(picID).then((picObject)=>{
+    console.log(picObject)
     const newAve = ((picObject.avgRating*picObject.totalRatings) + Number(req.body.newrating))/(picObject.totalRatings + 1)
     const updateInfo = {
        totalRatings: picObject.totalRatings+1,
@@ -73,22 +74,12 @@ router.delete('/api/crud/:_id',verifyAuthentication,(req,res)=>{ //deletes pic
     })
 })
 
-router.get('/api/crud/orderedpics/:order/:limit',(req,res)=>{ 
-  let sortType;
-  
-  if(req.params.order == 'ascending') {
-    sortType = 'avgRating';
-  }
-  else if (req.params.order == 'descending') {
-    sortType = '-avgRating';
-  }
-  else {
-    res.send("Please specify ascending or descending");
-  }
+router.get('/api/crud/orderedpics/:order/:limit',verifyAuthentication,(req,res)=>{
+  const sortType = req.params.order == 'ascending' ? 'avgRating' : '-avgRating'
 
   // get ordered list
   pictures.find({totalRatings: {$gt: 5}})
-  .sort(sortType) 
+  .sort(sortType)
   .limit(parseInt(req.params.limit))
   .exec((err,pics)=> {
     if(err){
@@ -96,12 +87,7 @@ router.get('/api/crud/orderedpics/:order/:limit',(req,res)=>{
     }
     else{
       const picsObject = pics.map((pic)=> {
-        return ({
-          petName: pic.petName,
-          imgLink: pic.imgLink,
-          totalRatings: pic.totalRatings,
-          avgRating: pic.avgRating
-        })
+        return clientFilter(pic)
       })
       res.send(picsObject);
     }
@@ -144,27 +130,14 @@ function randomPic(picArr,user){
   return clientFilter(chosenPic)
 }
 
-
-function findSinglePic(picid){
-  return new Promise((resolve,reject)=>{
-    pictures.find({'_id':picid},(err,pic)=>{
-      if(err){
-        reject(err)
-      }
-      else{
-        resolve(pic[0])
-      }
-    })
-  })
-}
-
 function clientFilter(fullObj){
-  const {_id,imgLink,petName,avgRating,votable} = fullObj
+  const {_id,imgLink,petName,totalRatings,avgRating,votable} = fullObj
   const picked = {
     _id:_id,
     imgLink:imgLink,
     petName:petName,
     avgRating:avgRating,
+    totalRatings:totalRatings,
     votable:votable
   };
   return picked
