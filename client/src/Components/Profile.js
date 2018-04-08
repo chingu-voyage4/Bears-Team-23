@@ -51,8 +51,8 @@ class Profile extends Component {
 
   uploadWidget = (e) => {
     e.preventDefault();
-    window.cloudinary.openUploadWidget({ 
-      cloud_name: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME, 
+    window.cloudinary.openUploadWidget({
+      cloud_name: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME,
       upload_preset: process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET,
       cropping: 'server',
       cropping_aspect_ratio: 1
@@ -115,48 +115,51 @@ class Profile extends Component {
   handleGuest(){
     window.location = '/'
   }
+  uploadArea(){
+    if(this.state.pets.length >= 5){return null}
+    let submitClass = classnames({
+      profile__pet__form__submit: true,
+      profile__pet__form__submit__hidden: this.checkFormCompletion(),
+      profile__pet__form__button: true
+    })
+    return(
+      <div className = "profile__pet__form">
+          <p className = "profile__pet__form__title">Add a new pet!</p>
+          <p>Pet Name</p>
 
+          <input
+            type = "text"
+            name = "petName"
+            className = "profile__pet__form__nameInput"
+            value = {this.state.petName}
+            onChange = {this.handleInputChange}
+          />
+
+          <button onClick = {this.uploadWidget} className = "profile__pet__form__upload profile__pet__form__button">
+          {this.state.petImgUrl ? "Change picture" : "Add a picture"}
+          </button>
+
+          { this.state.petImgUrl &&
+            <img src = {this.state.petImgUrl} className = "profile__pet__form__thumbnail" alt=""/>
+          }
+          <button onClick = {this.uploadPet} className = {submitClass}>Rate my Pet!</button>
+      </div>
+    )
+  }
   render() {
-
-      let submitClass = classnames({
-        profile__pet__form__submit: true,
-        profile__pet__form__submit__hidden: this.checkFormCompletion(),
-        profile__pet__form__button: true
-      })
-
       if (this.getUserName()){
         return (
           <div className="ProfileModel">
             <Navbar />
             <div className = "Profile">
-            <div className = "profile__pet__render">
-              {this.petArray()}
-            </div>
-              <div className = "profile__pet__form">
-                  <p className = "profile__pet__form__title">Add a new pet!</p>
-                  <p>Pet Name</p>
-
-                  <input
-                    type = "text"
-                    name = "petName"
-                    className = "profile__pet__form__nameInput"
-                    value = {this.state.petName}
-                    onChange = {this.handleInputChange}
-                  />
-
-                  <button onClick = {this.uploadWidget} className = "profile__pet__form__upload profile__pet__form__button">
-                  {this.state.petImgUrl ? "Change picture" : "Add a picture"}
-                  </button>
-
-                  { this.state.petImgUrl &&
-                    <img src = {this.state.petImgUrl} className = "profile__pet__form__thumbnail" alt=""/>
-                  }
-                  <button onClick = {this.uploadPet} className = {submitClass}>Rate my Pet!</button>
+              <div className = "profile__pet__render">
+                {this.petArray()}
               </div>
+                {this.uploadArea()}
             </div>
             <Footer />
           </div>
-  
+
         );
     }
     else {this.handleGuest()}
