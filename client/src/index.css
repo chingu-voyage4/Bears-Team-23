@@ -11,9 +11,3 @@ body {
   background-repeat: no-repeat;
   font-family: "Roboto", sans-serif;
 }
-
-.conPlaceholder {
-  position: relative;
-  top: 40%;
-  font-size: 24px;
-}
