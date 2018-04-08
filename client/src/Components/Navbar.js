@@ -29,6 +29,9 @@ class Navbar extends React.Component {
   linkToProfile(){
     window.location="/profile"
   }
+  linkToRankings(){
+    window.location="/rankings"
+  }
 
   goHome() {
     window.location="/"
@@ -55,23 +58,27 @@ class Navbar extends React.Component {
 
     let dropdownClass = classnames({
       navbar__dropdown__content: true,
-      navbar__dropdown__content__onClick: this.state.showDropdown
+      navbar__dropdown__content__onClick: this.state.showDropdown,
     })
+
+
 
     if(this.props.user.user.authenticated){
       return (
         <div className="navbar">
-          <img src={logo} className="navbar__img" alt="appfavicon" onClick = {this.goHome}/>
+          <img src={logo} className= 'navbar__img' alt="appfavicon" onClick = {this.goHome}/>
           
           <div className = 'navbar__links'>
             <div className = 'navbar__items'>
               <p className = {'navbar__item'} onClick = {this.linkToProfile}>Profile</p>
+              <p className = {'navbar__item'} onClick = {this.linkToRankings}>Rankings</p>
               <p className = {'navbar__item'} onClick = {this.handleLogout}>Logout</p>
             </div>
 
             <div className="navbar__hamburger " onClick = {() => this.showDropdown(true)}><i className="fas fa-bars"></i></div>
               <div className = {dropdownClass}>
                 <p className = "navbar__dropdown__content__item" onClick = {this.linkToProfile}>Profile</p>
+                <p className = "navbar__dropdown__content__item" onClick = {this.linkToRankings}>Rankings</p>
                 <p className = "navbar__dropdown__content__item" onClick = {this.handleLogout}>Logout</p>
             </div>
           </div>
@@ -82,7 +89,7 @@ class Navbar extends React.Component {
     else {
       return (
         <div className="navbar">
-          <img src={logo} className="navbar__img" alt="appfavicon" onClick = {this.goHome}/>
+          <img src={logo} className="navbar__img navbar__img__center" alt="appfavicon" onClick = {this.goHome}/>
         </div>
       );
     }

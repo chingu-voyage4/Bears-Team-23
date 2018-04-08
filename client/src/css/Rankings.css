@@ -1,0 +1,85 @@
+.Rankings {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cuteList, .notList {
+    margin-top: 50px;
+}
+
+
+
+.cuteLogo, .notLogo {
+    width: 200px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    margin-bottom: 40px;
+    z-index: -1;
+}
+
+.notList {
+    position: relative;
+    bottom: 19px;
+}
+
+.notLogo {
+    top: 2px;
+}
+
+.notList {
+    margin-left: 100px;
+}
+
+.cuteList__item {
+    display: flex;
+    height: 100px;
+    background: #fff;
+    width: 400px;
+    margin-bottom: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border-radius: 3px;
+}
+
+.cuteList__name {
+    font-size: 24px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+
+.cuteList__img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 3px 0px  0px 3px;
+}
+
+@media (max-width: 952px) {
+    .notList {
+        margin-left: 50px;
+    }
+}
+
+
+@media (max-width: 872px) {
+    .notLogo {
+        filter: drop-shadow(0px 3px 6px #0000003b);
+    }
+    .notList {
+        margin-left: 0px;
+    }
+
+}
+
+
+
+@media (max-width: 480px) {
+    .cuteList__item {
+        width: 100%;
+    }
+
+}

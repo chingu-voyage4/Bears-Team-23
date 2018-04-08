@@ -82,7 +82,7 @@
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .navbar__items {
     display: none;
   }
@@ -96,6 +96,12 @@
     left: 5%;
     transform: translateX(0%);
     width: 75%;
+  }
+
+  .navbar__img__center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
 }
