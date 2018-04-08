@@ -54,7 +54,7 @@ class AnimalContainer extends React.Component {
         return (
         <div className = 'AnimalContainer__icons'>
           <p className = "AnimalContainer__icons__rating">Cuteness Rating: {Math.round(this.state.currentPic.avgRating * 100, 2)}%</p>
-          <div onClick = {this.setRandomPic}><i className="fas fa-step-forward skipButton"></i></div> 
+          <div onClick = {this.setRandomPic}><i className="fas fa-step-forward skipButton"></i></div>
         </div>
         )
       }
@@ -91,7 +91,7 @@ class AnimalContainer extends React.Component {
       else {
         return(
           <div className = 'AnimalContainer'>
-            <p>No Pets Found !!</p>
+            <div className = 'AnimalContainer__imageAreaLoading' />
           </div>
         )
       }
