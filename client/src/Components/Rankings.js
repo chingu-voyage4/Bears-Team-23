@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import  './../css/Rankings.css';
 import Footer from './Footer';
-import {getRankings} from '../crud/CRUD';
+import {userInfo, getRankings} from '../crud/CRUD';
 import cuteImg from './../img/cute.png'
 import notImg from './../img/not.png'
 
@@ -12,7 +12,7 @@ class Rankings extends React.Component {
         this.state = {
             cuteList: [],
             notCuteList: []
-        }    
+        }
     }
     componentDidMount() {
         this.setRankings();
@@ -27,57 +27,51 @@ class Rankings extends React.Component {
         })
     }
 
-    cuteListView = ()=> {
-        return (
-            <p>Hello</p> 
-        )
-    }
-
-
-
-
     render() {
-        return (
-        <div className = 'rankingModel'>
-            <Navbar />
-                <div className = 'Rankings'>
-                    <div className = 'cuteList' >
-                    <img className = 'cuteLogo' src = {cuteImg} alt = ''/>
-                    {this.state.cuteList.map((cuteList, index)=> {
-                        return (
-                            <div className = 'cuteList__item' key = {index}>
-                                <div><img className = "cuteList__img"src = {cuteList.imgLink} alt = ""/></div>
-                                <div>
-                                <p className = 'cuteList__name'>#{index + 1} {cuteList.petName}</p>
-                                <p className = 'cuteList__rating'>Cuteness Rating: {Math.round(cuteList.avgRating * 100)}%</p>
-                                <p className = 'cuteList__votes'>From {cuteList.totalRatings} votes</p>
-                                </div>
-                            </div>
-                        )
-                    })}
-                    </div>
+       if(userInfo().authenticated){
+         return (
+             <div className = 'rankingModel'>
+                 <Navbar />
+                     <div className = 'Rankings'>
+                         <div className = 'cuteList' >
+                         <img className = 'cuteLogo' src = {cuteImg} alt = ''/>
+                         {this.state.cuteList.map((cuteList, index)=> {
+                             return (
+                                 <div className = 'cuteList__item' key = {index}>
+                                     <div><img className = "cuteList__img"src = {cuteList.imgLink} alt = ""/></div>
+                                     <div>
+                                     <p className = 'cuteList__name'>#{index + 1} {cuteList.petName}</p>
+                                     <p className = 'cuteList__rating'>Cuteness Rating: {Math.round(cuteList.avgRating * 100)}%</p>
+                                     <p className = 'cuteList__votes'>From {cuteList.totalRatings} votes</p>
+                                     </div>
+                                 </div>
+                             )
+                         })}
+                         </div>
 
-                    <div className = 'notList' >
-                    <img className = 'notLogo' src = {notImg} alt = ''/>
-                        {this.state.notCuteList.map((cuteList, index)=> {
-                            return (
-                                <div className = 'cuteList__item' key = {index}>
-                                    <div><img className = "cuteList__img"src = {cuteList.imgLink} alt = ""/></div>
-                                    <div>
-                                    <p className = 'cuteList__name'>#{index + 1} {cuteList.petName}</p>
-                                    <p className = 'cuteList__rating'>Cuteness Rating: {Math.round(cuteList.avgRating * 100)}%</p>
-                                    <p className = 'cuteList__votes'>From {cuteList.totalRatings} votes</p>
-                                    </div>
-                                </div>
-                            )
-                        })}
+                         <div className = 'notList' >
+                         <img className = 'notLogo' src = {notImg} alt = ''/>
+                             {this.state.notCuteList.map((cuteList, index)=> {
+                                 return (
+                                     <div className = 'cuteList__item' key = {index}>
+                                         <div><img className = "cuteList__img"src = {cuteList.imgLink} alt = ""/></div>
+                                         <div>
+                                         <p className = 'cuteList__name'>#{index + 1} {cuteList.petName}</p>
+                                         <p className = 'cuteList__rating'>Cuteness Rating: {Math.round(cuteList.avgRating * 100)}%</p>
+                                         <p className = 'cuteList__votes'>From {cuteList.totalRatings} votes</p>
+                                         </div>
+                                     </div>
+                                 )
+                             })}
 
-                    </div>
-                </div>
-            <Footer />
-        </div>
-        )
-    }
+                         </div>
+                     </div>
+                 <Footer />
+             </div>
+             )
+         }
+       else{window.location = '/'}
+     }
 }
 
 export default Rankings;
