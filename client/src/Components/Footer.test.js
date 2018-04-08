@@ -4,5 +4,7 @@ import { shallow } from 'enzyme';
 
 
 it('Footer renders without error', () => {
-  shallow(<Footer />);
+  const wrapper= shallow(<Footer />);
+
+  expect(wrapper.contains("https://chingu-cohorts.github.io/chingu-directory/"))
 });

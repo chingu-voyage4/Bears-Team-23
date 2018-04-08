@@ -4,5 +4,7 @@ import { shallow } from 'enzyme';
 
 
 it('aain renders without error', () => {
-  shallow(<main />);
+  const wrapper = shallow(<main />);
+
+  expect(wrapper.contains("if(this.state.ready){return (<div>{this.props.children}</div>)}"))
 });

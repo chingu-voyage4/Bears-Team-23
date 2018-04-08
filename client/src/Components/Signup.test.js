@@ -31,3 +31,12 @@ it('Signup renders without error', () => {
     </div>
   </div>);
 });
+
+it('signup_user renders without error', () => {
+  const wrapper = shallow(
+
+  <div className="signup__user" />);
+
+expect(wrapper.contains("It's like Hot or Not,<br /> but for pets"))
+
+});
