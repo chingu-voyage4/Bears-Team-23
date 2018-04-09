@@ -31,15 +31,11 @@ class AnimalContainer extends React.Component {
     }
     voteOnPic = async (value)=> {
       const response = await updatePic(this.state.currentPic, value)
-      if(response){
-        this.setState({
-          currentPic: response,
-          isLoading: false,
-          showSkip: false,
-          test: true
-        });
-        this.timer = setTimeout(()=>this.setRandomPic(), 1300)
-      }
+      this.setState({
+        currentPic: response,
+        isLoading: false,
+        showSkip: false
+      },()=>{this.timer = setTimeout(()=>this.setRandomPic(), 1300)});
     }
 
     getAnimalContainerIcons() {
