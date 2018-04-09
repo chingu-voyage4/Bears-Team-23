@@ -1,6 +1,7 @@
 import React from 'react';
 import './../css/AnimalContainer.css';
 import { getRandomPic, updatePic } from './../crud/CRUD';
+import classnames from 'classnames';
 
 class AnimalContainer extends React.Component {
     constructor(props) {
@@ -8,7 +9,7 @@ class AnimalContainer extends React.Component {
       this.state = {
         currentPic:null,
         isLoading: false,
-        showSkip: true
+        showSkip: true,
       };
       this.setRandomPic=this.setRandomPic.bind(this)
     }
@@ -30,14 +31,11 @@ class AnimalContainer extends React.Component {
     }
     voteOnPic = async (value)=> {
       const response = await updatePic(this.state.currentPic, value)
-      if(response){
-        this.setState({
-          currentPic: response,
-          isLoading: false,
-          showSkip: false
-        });
-        this.timer = setTimeout(()=>this.setRandomPic(), 1300)
-      }
+      this.setState({
+        currentPic: response,
+        isLoading: false,
+        showSkip: false
+      },()=>{this.timer = setTimeout(()=>this.setRandomPic(), 1300)});
     }
 
     getAnimalContainerIcons() {
@@ -66,8 +64,16 @@ class AnimalContainer extends React.Component {
     }
 
 
+
     render() {
+
       if(this.state.currentPic && !this.state.isLoading){
+
+        let petNames = classnames({
+          AnimalContainer__petName: true,
+          AnimalContainer__petName__small: this.state.currentPic.petName.length >= 10
+        })
+
         return (
           <div className = "AnimalContainer">
           <img
@@ -75,7 +81,7 @@ class AnimalContainer extends React.Component {
             className = "AnimalContainer__img"
             alt = ""
             onError={this.setRandomPic}/>
-          <p className = "AnimalContainer__petName">{this.state.currentPic.petName}</p>
+          <p className = {petNames}>{this.state.currentPic.petName}</p>
           {this.getAnimalContainerIcons()}
           </div>
         )

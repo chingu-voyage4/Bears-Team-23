@@ -43,3 +43,9 @@
 .fa-times {
     cursor: pointer;
 }
+
+@media(max-width: 480px) {
+    .Modal {
+        width: 80%;
+    }
+}
