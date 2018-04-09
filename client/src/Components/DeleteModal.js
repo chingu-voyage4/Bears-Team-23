@@ -12,7 +12,7 @@ const DeleteModal = (props) => {
             ariaHideApp={false}
         >
         <div className = "Modal_Row">
-            <p className = 'modalText'>Are you sure you want to delete {props.petName}? This cannot undone.</p>
+            <p className = 'modalText'>Are you sure you want to delete {props.petName}? This cannot be undone.</p>
             <div className = "modalClose" onClick = {props.closeModal}>&#10005;</div>
         </div>
 
