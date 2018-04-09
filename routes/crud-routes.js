@@ -42,7 +42,6 @@ router.post('/api/crud',verifyAuthentication,(req,res)=>{ // Creates new pic
 router.put('/api/crud/:_id', (req, res)=>{ // update pic
   const picID = req.params._id;
   pictures.findById(picID).then((picObject)=>{
-    console.log(picObject)
     const newAve = ((picObject.avgRating*picObject.totalRatings) + Number(req.body.newrating))/(picObject.totalRatings + 1)
     const updateInfo = {
        totalRatings: picObject.totalRatings+1,
