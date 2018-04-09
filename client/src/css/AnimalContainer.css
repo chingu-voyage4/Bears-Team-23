@@ -21,6 +21,10 @@
  font-size: 48px; 
 }
 
+.AnimalContainer__petName__small {
+  font-size: 36px;
+}
+
 .AnimalContainer__img {
   width: 300px;
   height: 300px;

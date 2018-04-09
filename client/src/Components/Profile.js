@@ -68,9 +68,11 @@ class Profile extends Component {
 
 
   handleInputChange = (event)=> {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+    if(event.target.value.length < 15) { 
+      this.setState({
+        [event.target.name]: event.target.value
+      });
+    }
   }
 
   uploadPet = async (e)=> {
