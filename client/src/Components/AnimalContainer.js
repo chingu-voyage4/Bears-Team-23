@@ -35,7 +35,7 @@ class AnimalContainer extends React.Component {
         currentPic: response,
         isLoading: false,
         showSkip: false
-      },()=>{this.timer = setTimeout(()=>this.setRandomPic(), 1300)});
+      },()=>{this.timer = setTimeout(this.setRandomPic, 1300)});
     }
 
     getAnimalContainerIcons() {
