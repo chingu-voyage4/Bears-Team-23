@@ -13,19 +13,19 @@ class ProfilePets extends React.Component {
         }
     }
 
-    
+
 
     render(){
         let deleteButtonClass = classnames({
             ProfilePets__delete: true,
             //ProfilePets__delete__show: this.state.mouseIsHovering
-        }) 
+        })
         let ProfilePetsClass = classnames({
             ProfilePets: true,
             //ProfilePets__hover: this.state.mouseIsHovering
         })
         return (
-            <div 
+            <div
                 className = {ProfilePetsClass}
                 onMouseEnter = {()=> this.setState({mouseIsHovering: true})}
                 onMouseLeave = {()=> this.setState({mouseIsHovering: false})}
@@ -37,13 +37,13 @@ class ProfilePets extends React.Component {
                     <p className = 'ProfilePets__name'>{this.props.petObject.petName}</p>
                     <p className = 'ProfilePets__rating'>Cuteness Rating: {Math.round(this.props.petObject.avgRating * 100)}%</p>
                     <p>From {this.props.petObject.totalRatings} votes</p>
-                    <button 
-                        className = {deleteButtonClass} 
-                        onClick={()=>this.setState({showDeleteModal: true})}> 
+                    <button
+                        className = {deleteButtonClass}
+                        onClick={()=>this.setState({showDeleteModal: true})}>
                         <i className="far fa-trash-alt"></i>
                     </button>
                 </div>
-                <DeleteModal 
+                <DeleteModal
                 isOpen = {this.state.showDeleteModal}
                 deletePic = {()=>this.props.deletePic(this.props.petObject._id)}
                 closeModal = {()=> this.setState({showDeleteModal:false})}
