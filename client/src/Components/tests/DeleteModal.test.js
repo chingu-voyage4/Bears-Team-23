@@ -1,7 +1,7 @@
 import React from 'react';
-import DeleteModal from './DeleteModal';
-import Modal from './DeleteModal';
-import props from './DeleteModal';
+import DeleteModal from '../DeleteModal';
+import Modal from '../DeleteModal';
+import props from '../DeleteModal';
 import { shallow } from 'enzyme';
 
 
