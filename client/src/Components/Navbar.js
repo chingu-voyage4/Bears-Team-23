@@ -67,7 +67,7 @@ class Navbar extends React.Component {
       return (
         <div className="navbar">
           <img src={logo} className= 'navbar__img' alt="appfavicon" onClick = {this.goHome}/>
-          
+
           <div className = 'navbar__links'>
             <div className = 'navbar__items'>
               <p className = {'navbar__item'} onClick = {this.linkToProfile}>Profile</p>
@@ -77,6 +77,7 @@ class Navbar extends React.Component {
 
             <div className="navbar__hamburger " onClick = {() => this.showDropdown(true)}><i className="fas fa-bars"></i></div>
               <div className = {dropdownClass}>
+                <p className = "navbar__dropdown__content__item" onClick = {()=>window.location="/"}>Home</p>
                 <p className = "navbar__dropdown__content__item" onClick = {this.linkToProfile}>Profile</p>
                 <p className = "navbar__dropdown__content__item" onClick = {this.linkToRankings}>Rankings</p>
                 <p className = "navbar__dropdown__content__item" onClick = {this.handleLogout}>Logout</p>
