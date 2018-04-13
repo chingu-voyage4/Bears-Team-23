@@ -79,7 +79,7 @@ class AnimalContainer extends React.Component {
           <img
             src = {this.state.currentPic.imgLink}
             className = "AnimalContainer__img"
-            alt = ""
+            alt = {this.state.currentPic.petName}
             onError={this.setRandomPic}/>
           <p className = {petNames}>{this.state.currentPic.petName}</p>
           {this.getAnimalContainerIcons()}
