@@ -1,5 +1,5 @@
 import React from 'react';
-import main from './main';
+import main from '../main';
 import { shallow } from 'enzyme';
 
 
