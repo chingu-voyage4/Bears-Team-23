@@ -31,7 +31,7 @@ class ProfilePets extends React.Component {
                 onMouseLeave = {()=> this.setState({mouseIsHovering: false})}
             >
                 <div className = 'ProfilePets__imgholder'>
-                    <img className = 'ProfilePets__img' src = {this.props.petObject.imgLink} alt = "" />
+                    <img className = 'ProfilePets__img' src = {this.props.petObject.imgLink} alt = {this.props.petObject.petName} />
                 </div>
                 <div className = 'ProfilePets__info'>
                     <p className = 'ProfilePets__name'>{this.props.petObject.petName}</p>

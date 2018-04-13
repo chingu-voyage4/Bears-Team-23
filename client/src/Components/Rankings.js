@@ -38,7 +38,7 @@ class Rankings extends React.Component {
                          {this.state.cuteList.map((cuteList, index)=> {
                              return (
                                  <div className = 'cuteList__item' key = {index}>
-                                     <div><img className = "cuteList__img"src = {cuteList.imgLink} alt = ""/></div>
+                                     <div><img className = "cuteList__img"src = {cuteList.imgLink} alt = {cuteList.petName}/></div>
                                      <div>
                                      <p className = 'cuteList__name'>#{index + 1} {cuteList.petName}</p>
                                      <p className = 'cuteList__rating'>Cuteness Rating: {Math.round(cuteList.avgRating * 100)}%</p>
@@ -54,7 +54,7 @@ class Rankings extends React.Component {
                              {this.state.notCuteList.map((cuteList, index)=> {
                                  return (
                                      <div className = 'cuteList__item' key = {index}>
-                                         <div><img className = "cuteList__img"src = {cuteList.imgLink} alt = ""/></div>
+                                         <div><img className = "cuteList__img"src = {cuteList.imgLink} alt = {cuteList.petName}/></div>
                                          <div>
                                          <p className = 'cuteList__name'>#{index + 1} {cuteList.petName}</p>
                                          <p className = 'cuteList__rating'>Cuteness Rating: {Math.round(cuteList.avgRating * 100)}%</p>
