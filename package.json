@@ -5,23 +5,33 @@
   "scripts": {
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.2",
-    "express": "^4.16.2"
+    "classnames": "^2.2.5",
+    "cookie-session": "^2.0.0-beta.3",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.7",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
+    "passport-twitter": "^1.0.4",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "concurrently": "^3.5.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dereje1/Bears-Team-23.git"
+    "url": "git+https://github.com/chingu-voyage4/Bears-Team-23.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Dereje1/Bears-Team-23/issues"
+    "url": "https://github.com/chingu-voyage4/Bears-Team-23/issues"
   },
-  "homepage": "https://github.com/Dereje1/Bears-Team-23#readme"
+  "homepage": "https://github.com/chingu-voyage4/Bears-Team-23#readme"
 }

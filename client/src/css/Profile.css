@@ -1,0 +1,90 @@
+.Profile {
+    background: #fff;
+    width: 80%;
+    min-height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: -1;
+}
+
+
+.profile__pet__render {
+    display: flex;
+    flex-wrap: wrap;
+}
+.profile__pet__form {
+    margin-left: 20px;
+    /* border: 1px solid black; */
+    height: 470px;
+    width: 40%;
+    padding-left: 20px;
+}
+
+.profile__pet__form__title {
+    font-size: 1.6rem;
+    position: relative;
+}
+
+.profile__pet__form__nameInput {
+    width: 70%;
+    height: 30px;
+    font-size: 1.1em;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #cccccc;
+}
+
+.profile__pet__form__button {
+    width: 120px;
+    height: 40px;
+    background: #1a6aed;
+    display: block;
+    color: #fff;
+    font-size: 1em;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all .3s;
+}
+
+.profile__pet__form__button:hover {
+    transform: scale(1.06)
+}
+
+.profile__pet__form__thumbnail {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 30px;
+}
+
+.profile__pet__form__submit {
+    transition: all .3s;
+    opacity: 1;
+}
+
+.profile__pet__form__submit__hidden {
+    opacity: 0;
+}
+
+@media (max-width: 635px) {
+    .profile__pet__render {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .profile__pet__form {
+        margin-left: 0px;
+        /* border: 1px solid black; */
+        width: 100%;
+        padding-left: 0px;
+    }
+
+}

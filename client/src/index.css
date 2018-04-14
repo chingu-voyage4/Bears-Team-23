@@ -7,7 +7,13 @@
 }
 
 body {
-  background: linear-gradient(#1a6aed 45%, #fff 0%);
+  background: linear-gradient(#1a6aed 400px, #fff 0%);
   background-repeat: no-repeat;
   font-family: "Roboto", sans-serif;
+}
+
+.conPlaceholder {
+  position: relative;
+  top: 40%;
+  font-size: 24px;
 }

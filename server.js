@@ -1,38 +1,43 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const private = require('dotenv').config();
+const path = require('path');
+const passport = require('passport');
+const passportSetup = require('./config/passport-setup');
+const router = require('express').Router();
+const cookieSession = require('cookie-session');
+
+const authRoutes = require('./routes/auth-routes');
+const crudRoutes = require('./routes/crud-routes');
 
 const app = express();
 const port = process.env.PORT || 5000;
 
+app.use('/',express.static(path.join(__dirname, './client/build')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/guest', (req, res) => {
- let headerObject = req.headers
- //the x-forwarded-for property of the header does not appear for local host so add an alternative or will
- //error out locally on split to get the ip address the rest of the requests are common to loacl and remote
- let ip = (headerObject['x-forwarded-for']||req.socket.remoteAddress).split(",")[0];
- ip = (ip === "::1") ? "local" : ip
-    res.json({
-     authenticated: false,
-     userip: ip,
-     username: "Guest",
-     displayname: "Guest"
-   });
-});
+// // set up session cookies
+app.use(cookieSession({
+  maxAge: 21 * 24 * 60 * 60 * 1000,
+  keys: [process.env.COOKIE_KEY]
+}));
 
-  app.get('/profile', (req, res) => {
-   let headerObject = req.headers
-   //the x-forwarded-for property of the header does not appear for local host so add an alternative or will
-   //error out locally on split to get the ip address the rest of the requests are common to loacl and remote
-   let ip = (headerObject['x-forwarded-for']||req.socket.remoteAddress).split(",")[0];
-   ip = (ip === "::1") ? "local" : ip
-      res.json({
-        authenticated: false,
-        userip: ip,
-        username: null,
-        displayname: null
-     });
-  });
+
+// // initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+//establishes db connection
+const db = require('./models/db')
+
+app.use(authRoutes);
+app.use(crudRoutes);
+
+app.get('/*', (req, res) =>{
+   res.sendFile(path.join(__dirname, './client/build', 'index.html'));
+ });
+
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
