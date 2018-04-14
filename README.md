@@ -1,6 +1,6 @@
 # Cute or Not
 
-A [chingu](https://chingu.io/) collaboration, full stack application that allows one to upload a pet and have users vote on the pet's cuteness (or lack thereof).
+A [chingu](https://chingu.io/) collaborative full stack application that allows one to upload a pet and have users vote on the pet's cuteness (or lack thereof).
 
 ## Getting Started
 
