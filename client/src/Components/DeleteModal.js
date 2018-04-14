@@ -10,6 +10,7 @@ const DeleteModal = (props) => {
             contentLabel="Delete Pet"
             className="Modal"
             ariaHideApp={false}
+            overlayClassName="Overlay"
         >
         <div className = "Modal_Row">
             <p className = 'modalText'>Are you sure you want to delete {props.petName}? This cannot be undone.</p>
