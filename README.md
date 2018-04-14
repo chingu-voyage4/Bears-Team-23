@@ -8,12 +8,15 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-```
-Node
-npm / yarn
-Git
-mongoDB (locally or with mlab)
-```
+| Prerequisite                                | Version |
+| ------------------------------------------- | ------- |
+| [Node.js](http://nodejs.org) /  npm (comes with Node)  | `~ ^8.9.5` / `~^5.6.0` |
+| [yarn](https://yarnpkg.com/lang/en/docs/install/) | `~ ^1.3.2` |
+| [Git](https://git-scm.com/downloads) | `~ ^2` |
+| [MongoDB Community Server](https://docs.mongodb.com/manual/administration/install-community/) | `~ ^3.4.9`  |
+
+
+
 
 ### Installing
 
