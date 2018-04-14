@@ -6,6 +6,7 @@
     transition: .3s;
     padding-bottom: 10px;
     height: 290px;
+    position: relative
 }
 
 .ProfilePets__hover {
@@ -33,6 +34,7 @@
     margin-right: 15px;
     margin-bottom: 5px;
     font-size: 1rem;
+    z-index: -1;
 }
 
 .ProfilePets__delete {
