@@ -2,7 +2,7 @@
 
 A [chingu](https://chingu.io/) collaborative full stack application that allows one to upload a pet and have users vote on the pet's cuteness (or lack thereof).
 
-![alt text](https://res.cloudinary.com/bears23/image/upload/v1523774708/cuteornot.png)
+[![Cute or Not](https://res.cloudinary.com/bears23/image/upload/v1523774708/cuteornot.png)](https://cuteornotapp.herokuapp.com/)
 
 ## Getting Started
 
