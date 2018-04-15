@@ -2,6 +2,8 @@
 
 A [chingu](https://chingu.io/) collaborative full stack application that allows one to upload a pet and have users vote on the pet's cuteness (or lack thereof).
 
+![alt text](https://res.cloudinary.com/bears23/image/upload/v1523774708/cuteornot.png)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -24,25 +26,25 @@ Create a new directory and initialize git
 
 ```
 mkdir cuteornot
-cd cuteornot
-git init
+$ cd cuteornot
+$ git init
 ```
 
 Pull from github and install packages
 
 ```
-git pull https://github.com/chingu-voyage4/Bears-Team-23.git
-yarn
-cd client
-yarn
-cd ..
+$ git pull https://github.com/chingu-voyage4/Bears-Team-23.git
+$ yarn
+$ cd client
+$ yarn
+$ cd ..
 ```
 
 If using mongoDB locally see below to start the db (if using mlab skip this step)
 
 ```
-mkdir data
-mongod --port 27017 --dbpath=./data
+$ mkdir data
+$ mongod --port 27017 --dbpath=./data
 ```
 
 create .env files
@@ -63,15 +65,15 @@ REACT_APP_CLOUDINARY_UPLOAD_PRESET=<Cloudinary Upload Preset>
 
 Run development environment
 ```
-yarn dev
+$ yarn dev
 ```
 The Browser should now open up with the application in development mode.
 
 ## Running the tests
 
 ```
-cd client
-yarn test
+$ cd client
+$ yarn test
 ```
 
 ### Break down into end to end tests
